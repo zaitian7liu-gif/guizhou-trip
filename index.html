@@ -105,6 +105,21 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .wx{grid-template-columns:1fr;text-align:left}.wx-t{font-size:26px}
 .itin{grid-template-columns:60px 1fr;gap:10px}
 }
+
+.checklist .sec ul{background:linear-gradient(90deg,rgba(212,169,68,.04),transparent)}
+.checklist li.pk{padding:0;list-style:none;position:relative}
+.checklist li.pk::before{display:none}
+.checklist li.pk label{display:flex;align-items:flex-start;gap:12px;padding:8px 10px;border-radius:6px;cursor:pointer;transition:background .15s;user-select:none;line-height:1.7}
+.checklist li.pk label:hover{background:rgba(212,169,68,.08)}
+.checklist li.pk input{appearance:none;-webkit-appearance:none;width:20px;height:20px;border:2px solid var(--mid);border-radius:5px;flex-shrink:0;cursor:pointer;position:relative;margin-top:2px;background:#fff;transition:all .15s}
+.checklist li.pk input:checked{background:var(--mid);border-color:var(--mid)}
+.checklist li.pk input:checked::after{content:"✓";position:absolute;top:-2px;left:2px;color:#fff;font-size:16px;font-weight:900}
+.checklist li.pk input:checked ~ span{color:#999;text-decoration:line-through;text-decoration-color:rgba(212,169,68,.5)}
+.checklist li.pk input:checked ~ span b{color:#aaa;background:transparent}
+.checklist li.pk span{flex:1;color:#3d3d3d;font-size:15px;transition:color .15s}
+.checklist li.pk span b{color:var(--ink);font-weight:600;background:linear-gradient(180deg,transparent 65%,rgba(212,169,68,.25) 65%);padding:0 2px;transition:all .15s}
+.checklist-reset{display:inline-block;margin-top:16px;padding:6px 14px;background:#f0e8d0;color:#8b6914;border-radius:6px;border:1px solid #d5cba6;cursor:pointer;font-size:13px;font-family:inherit}
+.checklist-reset:hover{background:var(--mid);color:#fff}
 </style>
 </head>
 <body>
@@ -436,85 +451,86 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 </section>
 
 
-<section class="card">
+<section class="card checklist">
   <h2 style="font-family:'Songti SC',serif;color:#1e4d2b;font-size:28px;letter-spacing:2px;margin-bottom:16px">🎒 必备清单 · 7 日贵州</h2>
   <p style="color:#555;font-size:14px;margin-bottom:20px">按目的地×季节×天气×环境定制。行前逐项打勾,漏一样可能行程崩盘。</p>
 
   <div class="sec"><div class="sec-t">— 证 件 & 电 子 —</div>
     <ul>
-      <li>☐ <b>身份证</b>(必备!高铁+酒店+景区实名)</li>
-      <li>☐ 身份证复印件 2 份 + 电子版存手机相册(丢证兜底)</li>
-      <li>☐ <b>银行卡 / 现金 300 元</b>(景区小店可能不收码)</li>
-      <li>☐ <b>手机 + 充电线 + 充电头</b>(Type-C/Lightning 别拿错)</li>
-      <li>☐ <b>充电宝</b>(≥10000mAh · 民航≤100Wh · 高铁不限)</li>
-      <li>☐ 数据线备用一根(酒店房间常掉线)</li>
+      <li class="pk"><label><input type="checkbox" data-k="pk1"><span><b>身份证</b>(必备!高铁+酒店+景区实名)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk2"><span>身份证复印件 2 份 + 电子版存手机相册(丢证兜底)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk3"><span><b>银行卡 / 现金 300 元</b>(景区小店可能不收码)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk4"><span><b>手机 + 充电线 + 充电头</b>(Type-C/Lightning 别拿错)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk5"><span><b>充电宝</b>(≥10000mAh · 民航≤100Wh · 高铁不限)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk6"><span>数据线备用一根(酒店房间常掉线)</span></label></li>
     </ul>
   </div>
 
   <div class="sec"><div class="sec-t">— 洗 漱 包 —</div>
     <ul>
-      <li>☐ <b>牙刷 + 牙杯 + 牙膏</b>(贵州酒店响应环保号召,大部分不含一次性洗漱)</li>
-      <li>☐ <b>剃须刀</b>(男)/ 剃毛刀(女)</li>
-      <li>☐ <b>毛巾 / 浴巾</b>(有洁癖或民宿住宿必带)</li>
-      <li>☐ 洗面奶 + 沐浴露 + 洗发水(旅行装,酒店的往往劣质)</li>
-      <li>☐ 护肤品:面霜 + 面膜 + 防晒霜(SPF50+ 荔波暴晒)</li>
-      <li>☐ 护手霜 + 润唇膏(贵州湿度大但秋燥)</li>
-      <li>☐ 女生:化妆包 + 卸妆水 + 生理期用品</li>
-      <li>☐ 隐形眼镜液 + 备用框架眼镜</li>
+      <li class="pk"><label><input type="checkbox" data-k="pk7"><span><b>牙刷 + 牙杯 + 牙膏</b>(贵州酒店响应环保号召,大部分不含一次性洗漱)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk8"><span><b>剃须刀</b>(男)/ 剃毛刀(女)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk9"><span><b>毛巾 / 浴巾</b>(有洁癖或民宿住宿必带)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk10"><span>洗面奶 + 沐浴露 + 洗发水(旅行装,酒店的往往劣质)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk11"><span>护肤品:面霜 + 面膜 + 防晒霜(SPF50+ 荔波暴晒)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk12"><span>护手霜 + 润唇膏(贵州湿度大但秋燥)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk13"><span>女生:化妆包 + 卸妆水 + 生理期用品</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk14"><span>隐形眼镜液 + 备用框架眼镜</span></label></li>
     </ul>
   </div>
 
   <div class="sec"><div class="sec-t">— 穿 搭 · 洋 葱 式 —</div>
     <ul>
-      <li>☐ <b>薄外套 / 冲锋衣</b>(必备!早晚 13-15°C 凉,洞穴恒温 15°C)</li>
-      <li>☐ <b>长袖 T 恤 × 3-4 件</b>(每 2 天换一次)</li>
-      <li>☐ 短袖 T × 2(荔波白天 25°C 会热)</li>
-      <li>☐ <b>长裤 × 2-3</b>(速干裤优先)</li>
-      <li>☐ <b>防滑运动鞋 / 轻徒步鞋</b>(必备!全程走路)</li>
-      <li>☐ <b>快干凉鞋</b>(水上森林专用,踩水必湿)</li>
-      <li>☐ 袜子 × 5-7 双(必备!)</li>
-      <li>☐ 内衣裤 × 5-7 套</li>
-      <li>☐ 睡衣(酒店空调冷)</li>
-      <li>☐ 帽子(遮阳+防头晒)</li>
+      <li class="pk"><label><input type="checkbox" data-k="pk15"><span><b>薄外套 / 冲锋衣</b>(必备!早晚 13-15°C 凉,洞穴恒温 15°C)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk16"><span><b>长袖 T 恤 × 3-4 件</b>(每 2 天换一次)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk17"><span>短袖 T × 2(荔波白天 25°C 会热)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk18"><span><b>长裤 × 2-3</b>(速干裤优先)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk19"><span><b>防滑运动鞋 / 轻徒步鞋</b>(必备!全程走路)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk20"><span><b>快干凉鞋</b>(水上森林专用,踩水必湿)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk21"><span>袜子 × 5-7 双(必备!)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk22"><span>内衣裤 × 5-7 套</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk23"><span>睡衣(酒店空调冷)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk24"><span>帽子(遮阳+防头晒)</span></label></li>
     </ul>
   </div>
 
   <div class="sec"><div class="sec-t">— 本 趟 特 有 · 贵 州 定 制 —</div>
     <ul>
-      <li>☐ <b>一次性雨衣 × 2</b>(必备!黄果树水帘洞湿身警告)</li>
-      <li>☐ <b>手机防水袋</b>(水帘洞 + 水上森林)</li>
-      <li>☐ <b>塑料袋 / 密封袋 × 3</b>(装湿鞋湿衣)</li>
-      <li>☐ 折叠伞(贵州十月阴雨概率 40%)</li>
-      <li>☐ <b>摇粒绒 / 防风外套</b>(织金洞恒温 15°C,里面待 2h 会冷)</li>
-      <li>☐ 防蚊液(荔波湿热,水上森林蚊多)</li>
-      <li>☐ 保温杯(高原地区多喝水防高反)</li>
+      <li class="pk"><label><input type="checkbox" data-k="pk25"><span><b>一次性雨衣 × 2</b>(必备!黄果树水帘洞湿身警告)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk26"><span><b>手机防水袋</b>(水帘洞 + 水上森林)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk27"><span><b>塑料袋 / 密封袋 × 3</b>(装湿鞋湿衣)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk28"><span>折叠伞(贵州十月阴雨概率 40%)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk29"><span><b>摇粒绒 / 防风外套</b>(织金洞恒温 15°C,里面待 2h 会冷)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk30"><span>防蚊液(荔波湿热,水上森林蚊多)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk31"><span>保温杯(高原地区多喝水防高反)</span></label></li>
     </ul>
   </div>
 
   <div class="sec"><div class="sec-t">— 常 用 药 —</div>
     <ul>
-      <li>☐ <b>蒙脱石散</b>(酸辣菜拉肚子必备)</li>
-      <li>☐ <b>藿香正气水/液</b>(中暑/胃口不适)</li>
-      <li>☐ 创可贴 + 碘伏棉签(徒步磨脚)</li>
-      <li>☐ 感冒药(贵州昼夜温差大)</li>
-      <li>☐ 布洛芬 / 泰诺(头疼发烧)</li>
-      <li>☐ 晕车药(往返景区山路多)</li>
-      <li>☐ 个人处方药(高血压/心脏病等,量够 10 天)</li>
+      <li class="pk"><label><input type="checkbox" data-k="pk32"><span><b>蒙脱石散</b>(酸辣菜拉肚子必备)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk33"><span><b>藿香正气水/液</b>(中暑/胃口不适)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk34"><span>创可贴 + 碘伏棉签(徒步磨脚)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk35"><span>感冒药(贵州昼夜温差大)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk36"><span>布洛芬 / 泰诺(头疼发烧)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk37"><span>晕车药(往返景区山路多)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk38"><span>个人处方药(高血压/心脏病等,量够 10 天)</span></label></li>
     </ul>
   </div>
 
   <div class="sec"><div class="sec-t">— 加 分 项 —</div>
     <ul>
-      <li>☐ 相机 + 备用电池 + 存储卡(想认真拍带上)</li>
-      <li>☐ 三脚架/自拍杆(一人行或想拍夜景)</li>
-      <li>☐ 蓝牙耳机(高铁路上听音乐)</li>
-      <li>☐ 眼罩 + 耳塞(高铁/酒店睡觉)</li>
-      <li>☐ 环保袋 × 2(装买的伴手礼)</li>
-      <li>☐ 小零食(高铁上垫肚子,巧克力/牛肉干)</li>
-      <li>☐ 湿巾 + 纸巾(景区厕所纸紧张)</li>
+      <li class="pk"><label><input type="checkbox" data-k="pk39"><span>相机 + 备用电池 + 存储卡(想认真拍带上)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk40"><span>三脚架/自拍杆(一人行或想拍夜景)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk41"><span>蓝牙耳机(高铁路上听音乐)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk42"><span>眼罩 + 耳塞(高铁/酒店睡觉)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk43"><span>环保袋 × 2(装买的伴手礼)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk44"><span>小零食(高铁上垫肚子,巧克力/牛肉干)</span></label></li>
+      <li class="pk"><label><input type="checkbox" data-k="pk45"><span>湿巾 + 纸巾(景区厕所纸紧张)</span></label></li>
     </ul>
   </div>
 
+  <button type="button" class="checklist-reset" id="checklistReset">↻ 清空所有勾选</button>
   <div class="tip">⚠️ <b>出发前 24h 三查</b>:①身份证在包里 ②手机充满电 + 充电宝满电 ③高铁票/酒店预订截图存手机相册。三样丢一样都行,身份证丢=行程直接崩。</div>
 </section>
 
@@ -543,5 +559,29 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
 </div>
 <footer>黔行 · 七日 · 2026 国庆 · 山水苗寨,好好玩</footer>
+
+<script>
+(function(){
+  var KEY='gz_checklist_v1';
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
+  var boxes=document.querySelectorAll('.checklist input[type=checkbox]');
+  boxes.forEach(function(b){
+    var k=b.dataset.k;
+    if(saved[k])b.checked=true;
+    b.addEventListener('change',function(){
+      saved[k]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+    });
+  });
+  var reset=document.getElementById('checklistReset');
+  if(reset)reset.addEventListener('click',function(){
+    if(!confirm('清空所有已勾选?'))return;
+    boxes.forEach(function(b){b.checked=false});
+    saved={};
+    try{localStorage.removeItem(KEY)}catch(e){}
+  });
+})();
+</script>
 </body>
 </html>
