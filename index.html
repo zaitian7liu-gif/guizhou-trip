@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>黔行·七日 · 贵州国庆细致攻略</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--chill:#5fa886;--mid:#d4a944;--heavy:#c86e4a;--ink:#1e4d2b;--paper:#faf7f0;--gold:#8b6914}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#2b2b2b;background:var(--paper);background-image:radial-gradient(circle at 10% 20%,rgba(122,184,154,.06) 0,transparent 40%),radial-gradient(circle at 90% 80%,rgba(212,169,68,.06) 0,transparent 40%);line-height:1.75;-webkit-font-smoothing:antialiased}
+.hero{background:linear-gradient(135deg,#1e4d2b 0%,#2d5f3f 45%,#4a7c59 100%);color:#faf7f0;padding:90px 24px 110px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(212,169,68,.18),transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.1),transparent 50%);pointer-events:none}
+.hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent,var(--paper));pointer-events:none}
+.mountains{position:absolute;bottom:60px;left:0;right:0;height:80px;opacity:.15;pointer-events:none}
+.mountains svg{width:100%;height:100%}
+.hero h1{font-size:56px;font-weight:700;letter-spacing:6px;margin-bottom:18px;font-family:"Songti SC","STSong",serif;position:relative;text-shadow:0 2px 20px rgba(0,0,0,.2)}
+.hero .sub{font-size:15px;opacity:.85;letter-spacing:8px;font-weight:300;position:relative}
+.hero .deco{width:60px;height:2px;background:#d4a944;margin:28px auto;position:relative}
+.hero .meta{margin-top:8px;display:inline-flex;gap:36px;padding:18px 40px;background:rgba(255,255,255,.1);border-radius:100px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);position:relative;font-size:15px;letter-spacing:2px;flex-wrap:wrap;justify-content:center}
+.container{max-width:1080px;margin:-60px auto 0;padding:0 24px 60px;position:relative;z-index:2}
+.card{background:#fff;border-radius:20px;padding:44px;box-shadow:0 10px 40px rgba(30,77,43,.08);margin-bottom:24px;position:relative}
+.card+.card::before{content:"❋";position:absolute;top:-16px;left:50%;transform:translateX(-50%);color:var(--mid);background:var(--paper);padding:0 12px;font-size:14px;opacity:.5}
+.overview h2,.day h3{font-family:"Songti SC","STSong",serif;color:#1e4d2b}
+.overview h2{font-size:30px;margin-bottom:12px;letter-spacing:2px}
+.overview .lead{color:#555;font-size:15px;margin-bottom:28px;line-height:1.9}
+.timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
+.tl-day{background:linear-gradient(180deg,#f5f1e4,#ebe4d0);padding:18px 6px 16px;border-radius:12px;text-align:center;border:1px solid #e8dfc7;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+.tl-day::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--mid)}
+.tl-day.c1::before{background:var(--chill)}
+.tl-day.c2::before{background:var(--heavy)}
+.tl-day.c3::before{background:linear-gradient(90deg,var(--chill),var(--mid))}
+.tl-day:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(30,77,43,.12)}
+.tl-day .d{font-weight:700;color:#2d5f3f;font-size:15px;letter-spacing:1px;margin-top:4px}
+.tl-day .w{color:var(--gold);font-size:11px;margin-top:2px;letter-spacing:1px}
+.tl-day .t{color:#3d3d3d;margin-top:10px;font-size:12px;font-weight:600;line-height:1.4}
+.day{position:relative;border-left:5px solid var(--mid);padding-left:44px;overflow:hidden}
+.day::before{content:"";position:absolute;left:-14px;top:44px;width:22px;height:22px;background:var(--mid);border-radius:50%;border:5px solid #fff;box-shadow:0 0 0 2px var(--mid),0 0 20px rgba(212,169,68,.4)}
+.day::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,68,.08),transparent 70%);pointer-events:none}
+.day-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;flex-wrap:wrap;gap:12px;padding-bottom:18px;border-bottom:2px dashed rgba(212,169,68,.25)}
+.day-head .num{color:var(--mid);font-size:13px;font-weight:700;letter-spacing:4px;margin-bottom:6px;display:inline-block;padding:3px 12px;background:rgba(212,169,68,.12);border-radius:4px}
+.day-head h3{font-size:28px;letter-spacing:2px;margin-top:4px}
+.day-head .date{color:#888;font-size:13px;margin-top:8px;letter-spacing:2px}
+.day-head .date::before{content:"▸ ";color:var(--mid)}
+.wx{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:linear-gradient(135deg,#eaf3f7 0%,#d5e5ee 60%,#e8f0e5 100%);border-radius:14px;padding:20px 24px;margin:20px 0 22px;border:1px solid #c3d9e5;position:relative;overflow:hidden;box-shadow:0 3px 12px rgba(90,114,128,.08)}
+.wx::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--chill),#5a7280)}
+.wx::after{content:"☁";position:absolute;right:14px;top:8px;font-size:52px;opacity:.1;color:#5a7280}
+.wx-t{font-family:"Songti SC",serif;color:var(--ink);font-size:32px;font-weight:700;line-height:1;letter-spacing:1px;white-space:nowrap;position:relative}
+.wx-t small{font-size:14px;color:#666;font-weight:400;letter-spacing:0}
+.wx-info{font-size:13.5px;color:#3d3d3d;line-height:1.75;position:relative}
+.wx-info b{color:var(--gold)}
+.wx-info .cond{color:#5a7280;font-weight:600;letter-spacing:1.5px;margin-bottom:4px;font-size:12px;display:inline-block;padding:3px 10px;background:rgba(255,255,255,.5);border-radius:100px}
+.sec{margin:22px 0;position:relative}
+.sec-t{font-size:11px;color:#fff;font-weight:700;letter-spacing:4px;margin-bottom:14px;display:inline-block;padding:5px 14px;background:linear-gradient(90deg,var(--gold),#b48920);border-radius:3px;box-shadow:0 2px 6px rgba(139,105,20,.2)}
+.sec p,.sec li{color:#3d3d3d;font-size:15px}
+.sec ul{list-style:none;background:linear-gradient(90deg,rgba(212,169,68,.04),transparent);border-radius:8px;padding:8px 12px}
+.sec li{padding:6px 0 6px 24px;position:relative}
+.sec li::before{content:"◈";position:absolute;left:0;color:var(--mid);font-size:12px;top:9px}
+.sec li b{color:var(--ink);font-weight:600;background:linear-gradient(180deg,transparent 65%,rgba(212,169,68,.25) 65%);padding:0 2px}
+.itin{display:grid;grid-template-columns:80px 1fr;gap:0;position:relative;padding-left:4px;background:linear-gradient(90deg,rgba(30,77,43,.03),transparent);border-radius:8px;overflow:hidden}
+.itin::before{content:"";position:absolute;left:84px;top:12px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--mid),transparent);opacity:.4}
+.itin dt{color:var(--mid);font-weight:700;font-size:13px;letter-spacing:1px;padding:11px 12px 11px 8px;border-top:1px solid #f0e8d0;position:relative;text-align:right}
+.itin dt::after{content:"●";position:absolute;right:-6px;top:50%;transform:translateY(-50%);color:var(--mid);font-size:10px;background:#fff;padding:0 2px;z-index:1}
+.itin dd{font-size:14.5px;color:#3d3d3d;line-height:1.7;padding:11px 4px 11px 20px;border-top:1px solid #f0e8d0}
+.itin dd b{color:var(--ink);font-weight:600}
+.itin dt:first-of-type,.itin dd:first-of-type{border-top:none;padding-top:8px}
+.eats{background:linear-gradient(135deg,#fff5ec,#fce4d0);border-radius:12px;padding:16px 20px;margin:14px 0;border:1px dashed #d99a6c;position:relative}
+.eats::before{content:"🍜";position:absolute;top:-14px;left:16px;background:#fff;padding:2px 8px;border-radius:100px;font-size:15px;box-shadow:0 2px 6px rgba(217,154,108,.2)}
+.eats-t{color:#a04f1e;font-weight:700;font-size:12px;letter-spacing:2px;margin:2px 0 8px 34px;display:inline-block}
+.eats ul{list-style:none;padding:0;background:transparent}
+.eats li{color:#5c3a20;font-size:14px;padding:3px 0 3px 18px;position:relative}
+.eats li::before{content:"◆";position:absolute;left:0;color:#d99a6c;font-size:10px;top:8px}
+.eats li b{color:#8b3a1e;background:linear-gradient(180deg,transparent 65%,rgba(217,154,108,.35) 65%);padding:0 2px}
+.metro{background:linear-gradient(135deg,#e8f1ec,#d0e0d5);border-radius:12px;padding:14px 20px;margin:14px 0;border-left:5px solid var(--chill);position:relative;font-size:14px;color:#2d4a37;line-height:1.85}
+.metro::before{content:"🚇";position:absolute;top:-12px;left:14px;background:#fff;padding:2px 8px;border-radius:100px;font-size:14px;box-shadow:0 2px 6px rgba(95,168,134,.2)}
+.metro b{color:var(--ink);font-weight:700}
+.metro .line1{color:#fff;background:#e6002d;padding:1px 8px;border-radius:100px;font-size:12px;font-weight:700;margin:0 2px;letter-spacing:0}
+.metro .line2{color:#fff;background:#0075c1;padding:1px 8px;border-radius:100px;font-size:12px;font-weight:700;margin:0 2px}
+.metro .line3{color:#fff;background:#f7a600;padding:1px 8px;border-radius:100px;font-size:12px;font-weight:700;margin:0 2px}
+.tip{background:linear-gradient(135deg,#fdf6e3,#faedc5);border-radius:10px;padding:16px 20px 16px 46px;margin-top:18px;font-size:14px;color:#6b5b23;border-left:4px solid var(--mid);line-height:1.75;position:relative;box-shadow:0 2px 8px rgba(212,169,68,.08)}
+.tip::before{content:"💡";position:absolute;left:16px;top:14px;font-size:18px;background:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;box-shadow:0 2px 4px rgba(139,105,20,.15)}
+.footer-tips{background:linear-gradient(135deg,#1e4d2b 0%,#2d5f3f 100%);color:#faf7f0;border-radius:20px;padding:48px 44px;margin-top:12px;position:relative;overflow:hidden}
+.footer-tips::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,rgba(212,169,68,.2),transparent 40%);pointer-events:none}
+.footer-tips h2{font-family:"Songti SC",serif;margin-bottom:32px;font-size:28px;letter-spacing:3px;position:relative}
+.tip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;position:relative}
+.tip-card{background:rgba(255,255,255,.08);padding:22px;border-radius:12px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.1)}
+.tip-card h4{color:#d4a944;font-size:14px;margin-bottom:10px;letter-spacing:3px;font-weight:700}
+.tip-card p{font-size:13.5px;line-height:1.8;opacity:.92}
+.sources{background:#fff;border-radius:16px;padding:24px 28px;margin-top:20px;font-size:13px;color:#666;line-height:1.9;border:1px dashed #d5cba6}
+.sources h4{color:#8b6914;font-size:12px;letter-spacing:3px;margin-bottom:10px}
+.sources a{color:#2d5f3f;text-decoration:none;border-bottom:1px dotted #2d5f3f}
+.sources a:hover{color:#d4a944;border-color:#d4a944}
+footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2px}
+@media(max-width:768px){
+.hero{padding:60px 20px 80px}.hero h1{font-size:36px;letter-spacing:3px}
+.hero .meta{flex-direction:column;gap:10px;padding:14px 24px}
+.container{padding:0 16px 40px}.card{padding:28px 22px;border-radius:16px}
+.timeline{grid-template-columns:repeat(3,1fr)}
+.day{padding-left:26px;border-left-width:4px}.day::before{left:-10px;width:16px;height:16px;border-width:4px;top:32px}
+.day-head h3{font-size:22px}.footer-tips{padding:32px 24px}
+.wx{grid-template-columns:1fr;text-align:left}.wx-t{font-size:26px}
+.itin{grid-template-columns:60px 1fr;gap:10px}
+}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>黔行 · 七日</h1>
+  <div class="sub">A SEVEN-DAY SOJOURN IN GUIZHOU</div>
+  <div class="deco"></div>
+  <div class="meta">
+    <span>📅 10.03 – 10.09</span>
+    <span>🏨 观山湖 · 林城西路</span>
+    <span>🏔 五景一寨</span>
+  </div>
+  <div class="mountains"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#faf7f0" d="M0,100 L0,60 L100,40 L200,55 L300,25 L400,50 L500,20 L600,45 L700,15 L800,40 L900,30 L1000,55 L1100,35 L1200,50 L1200,100 Z"/></svg></div>
+</div>
+<div class="container">
+
+<section class="card overview">
+  <h2>行程概览</h2>
+  <p class="lead">住宿固定在观山湖林城西路,每晚回酒店。用户指定 10.6 荔波、10.8 黄果树,中间 10.7 安排休闲日缓冲。累的重头戏之间必插一日轻度,保证不掉血。全程高铁往返 + 景区直通车,不折腾。</p>
+  <div class="timeline">
+    <div class="tl-day c1"><div class="d">10.03</div><div class="w">FRI</div><div class="t">京→贵阳<br>抵 达</div></div>
+    <div class="tl-day c1"><div class="d">10.04</div><div class="w">SAT</div><div class="t">天河潭<br>半 日</div></div>
+    <div class="tl-day"><div class="d">10.05</div><div class="w">SUN</div><div class="t">织金洞<br>一 日</div></div>
+    <div class="tl-day c2"><div class="d">10.06</div><div class="w">MON</div><div class="t">荔 波<br>小七孔</div></div>
+    <div class="tl-day"><div class="d">10.07</div><div class="w">TUE</div><div class="t">凯 里<br>逛 吃</div></div>
+    <div class="tl-day c2"><div class="d">10.08</div><div class="w">WED</div><div class="t">黄果树<br>瀑 布</div></div>
+    <div class="tl-day c1"><div class="d">10.09</div><div class="w">THU</div><div class="t">黔灵公园<br>返 京</div></div>
+  </div>
+</section>
+
+<section class="card day">
+  <div class="day-head">
+    <div><div class="num">DAY 01</div><h3>抵黔 · 观山湖落脚</h3><div class="date">10月3日 · 周五</div></div>
+  </div>
+  <div class="wx">
+    <div class="wx-t">22°<small>/</small>14°<small>C</small></div>
+    <div class="wx-info"><div class="cond">贵阳 · 多云间阴 · 或有阵雨</div><b>穿搭:</b> 长袖 T + 薄外套/防风夹克,长裤,舒适休闲鞋。<b>随身:</b> 折叠伞 + 充电宝。10 月贵阳雨说下就下,伞常备。</div>
+  </div>
+  <div class="metro"><b>地铁指南</b> · 龙洞堡机场 → 林城西路酒店:<span class="line3">3号线</span> 龙洞堡站上车 → <b>观山湖公园</b>下 → 步行 10min · 全程 50min · 5 元。<br><b>贵阳北 → 酒店</b>:<span class="line1">1号线</span> 贵阳北站上 → <b>观山湖公园</b>下 · 15min · 3 元。打车更快,15min 25 元。</div>
+  <div class="sec"><div class="sec-t">— 交 通 —</div>
+    <ul><li><b>飞机推荐</b>(首选) 北京→龙洞堡机场,3h。国庆机票旺季,提前 3 周订</li>
+    <li><b>高铁</b> 北京西 → 贵阳北 G403/G529,约 8h,累但便宜</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
+    <dl class="itin">
+      <dt>13:00</dt><dd>抵贵阳,酒店 <b>check-in</b>,林城西路周边商圈成熟(万象汇/悦然广场)</dd>
+      <dt>15:00</dt><dd><b>观山湖公园</b>散步,酒店步行 10min 直达,湖边栈道 + 亭台,不用门票</dd>
+      <dt>17:30</dt><dd>晚餐(见下方吃货块)</dd>
+      <dt>19:30</dt><dd>观山湖夜景灯光秀,或早点回酒店休整</dd>
+    </dl>
+  </div>
+  <div class="eats">
+    <div class="eats-t">— 观 山 湖 晚 餐 首 选 —</div>
+    <ul>
+      <li><b>新大新豆米火锅</b>(万象汇店) · 酒店步行 15min · 豆米火锅本地老字号,首餐暖胃优选</li>
+      <li><b>丝恋丝娃娃</b>(万象汇/悦然广场分店) · 贵阳国民小吃,一口一个卷</li>
+      <li><b>罗记牛肉粉 / 花溪王记牛肉粉</b> · 观山湖多家分店 · 想吃碗清淡的选这个</li>
+      <li><b>黔知味</b> · 万象汇 · 家常黔菜合集,人多适合</li>
+    </ul>
+  </div>
+  <div class="tip">到贵阳当天绝不安排景点,防止路上疲惫叠加轻微海拔反应(贵阳 1100m 海拔)。观山湖是贵阳新政务中心,酒店密集、便利店/商场步行可达,首日大本营。</div>
+</section>
+
+<section class="card day">
+  <div class="day-head">
+    <div><div class="num">DAY 02</div><h3>天河潭 · 山水浓缩版</h3><div class="date">10月4日 · 周六</div></div>
+  </div>
+  <div class="wx">
+    <div class="wx-t">21°<small>/</small>13°<small>C</small></div>
+    <div class="wx-info"><div class="cond">贵阳 · 多云 · 洞穴段体感 15°C</div><b>穿搭:</b> 长袖 + 薄外套,长裤,<b>防滑徒步鞋</b>(景区多石板 + 湿滑水洞)。备伞。</div>
+  </div>
+  <div class="metro"><b>去程</b> 酒店打车 → 天河潭景区 · 30min 60 元 · 直接门票口下车,省事。<br><b>晚间甲秀楼</b> <span class="line1">1号线</span> 观山湖公园 → 中山西路(甲秀楼步行 15min) · 30min · 打车 30min 40 元更快。<br><b>回酒店</b> 中山西路 → <span class="line1">1号线</span> 观山湖公园 · 或打车。</div>
+  <div class="sec"><div class="sec-t">— 交 通 —</div>
+    <ul><li>观山湖 → 天河潭 · 网约车 30min 约 60 元(比市区打车还近)</li>
+    <li>公共交通略绕不推荐 · 直接打车最省心</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
+    <dl class="itin">
+      <dt>08:30</dt><dd>酒店出发,便利店买份<b>肠旺面/糯米饭</b>路上吃</dd>
+      <dt>09:30</dt><dd>抵天河潭北门,买<b>船 + 索道联票</b>(约 90 元含游船)</dd>
+      <dt>10:00</dt><dd><b>银河飞瀑</b>拍照 → 卧龙湖栈道</dd>
+      <dt>10:45</dt><dd>坐游船入<b>水洞</b>,洞内乘船 30min,钟乳石点灯很出片</dd>
+      <dt>11:30</dt><dd>出洞徒步<b>陆洞 + 天生桥</b>,连接两洞的自然石桥</dd>
+      <dt>12:30</dt><dd>景区门口农家菜 · 竹荪炖鸡/腊肉焖饭</dd>
+      <dt>14:00</dt><dd>返市区,回酒店午睡 <b>1.5h</b>(下午必留白)</dd>
+      <dt>17:00</dt><dd>出发<b>甲秀楼</b>,打车 30min,门票免费</dd>
+      <dt>18:30</dt><dd>晚餐 · 见下方吃货块</dd>
+      <dt>20:00</dt><dd>甲秀楼夜景 + 文昌阁,南明河边散步<b>一小时</b>就够</dd>
+      <dt>21:30</dt><dd>回观山湖酒店</dd>
+    </dl>
+  </div>
+  <div class="eats">
+    <div class="eats-t">— 甲 秀 楼 + 夜 市 吃 什 么 —</div>
+    <ul>
+      <li><b>老凯里酸汤鱼</b>(甲秀楼分店) · 番茄酸汤 + 稻花鱼,首刷酸汤鱼选这家</li>
+      <li>饭后走去<b>青云市集</b> · <span class="line1">1号线</span>河滨公园站 A 口 · 夜市小吃头号地标,烙锅/烤脑花/糯米饭一次到位</li>
+      <li><b>太平路 / 富水北路</b> · 云岩区喷水池周边 · 老牌夜宵巷,若青云市集人爆炸备选</li>
+    </ul>
+  </div>
+  <div class="tip">天河潭半日足够,是"贵州山水浓缩",强度极低,当作热身。下午 2h 午睡不省,后面 5 天硬仗打不下。甲秀楼夜景 + 青云市集串成夜游线,是贵阳城市味道的合集。</div>
+</section>
+
+<section class="card day">
+  <div class="day-head">
+    <div><div class="num">DAY 03</div><h3>织金洞 · 溶洞之王</h3><div class="date">10月5日 · 周日</div></div>
+  </div>
+  <div class="wx">
+    <div class="wx-t">20°<small>/</small>13°<small>C</small></div>
+    <div class="wx-info"><div class="cond">织金 · 多云偶阴 · 洞内恒温 15°C 湿度高</div><b>穿搭:</b> 长袖 T + <b>摇粒绒/防风外套</b>(洞内必穿),长裤,<b>防滑运动鞋</b>。洞里凉且滑,别穿凉鞋。</div>
+  </div>
+  <div class="metro"><b>去程</b> 酒店 → <span class="line1">1号线</span> 观山湖公园 → 贵阳北站 · 15min · 或打车 25 元。<br><b>织金站 → 洞口</b> 站前<b>景区直通车</b>专柜,40min · 30 元/单程,不用打黑车。<br><b>返程</b> 织金 → 贵阳北 → <span class="line1">1号线</span>回酒店。</div>
+  <div class="sec"><div class="sec-t">— 交 通 —</div>
+    <ul><li><b>贵阳北 → 织金站</b> 高铁 1h,推荐早班 <b>C6021 · 08:19</b></li>
+    <li>返程末班高铁 <b>18:30 左右</b>,提前锁票</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
+    <dl class="itin">
+      <dt>06:45</dt><dd>起床,便利店买早餐 · 打车贵阳北站(15min)</dd>
+      <dt>08:20</dt><dd>高铁发车</dd>
+      <dt>09:30</dt><dd>抵织金站,直通车前往景区</dd>
+      <dt>10:15</dt><dd>抵洞口,乘<b>电瓶车摆渡</b>(必坐,省一半体力)</dd>
+      <dt>10:30</dt><dd>入洞,全程 6.6km,分 <b>10 大景区 47 个厅堂</b></dd>
+      <dt></dt><dd>重点看:<b>霸王盔 · 银雨树 · 卷曲石 · 塔松王国</b></dd>
+      <dt>13:00</dt><dd>出洞,景区外农家菜午餐</dd>
+      <dt>14:30</dt><dd>直通车返织金站</dd>
+      <dt>16:00</dt><dd>返程高铁</dd>
+      <dt>17:00</dt><dd>抵贵阳北,回观山湖</dd>
+      <dt>19:00</dt><dd>晚餐 · 见下方吃货块</dd>
+    </dl>
+  </div>
+  <div class="eats">
+    <div class="eats-t">— 织 金 + 贵 阳 归 来 —</div>
+    <ul>
+      <li><b>洞口午餐 · 织金水八碗</b> · 景区外农家院,八碗小蒸菜地道</li>
+      <li><b>竹荪炖乌鸡</b> · 织金特产,菌汤鲜</li>
+      <li><b>晚餐首选 · 土风豆米火锅</b> · 观山湖分店 · 或万象汇内<b>新大新</b>,累了一天豆米粥暖胃</li>
+      <li>不想动 · 酒店周边<b>悦然广场</b>连锁店/星巴克/日料随便吃</li>
+    </ul>
+  </div>
+  <div class="tip">"黄山归来不看岳,织金归来不看洞。"中国国家地理评选<b>六大最美溶洞之首</b>。洞内手机基本无信号,想拍照带广角/大光圈。洞里冷,进去前把外套穿上,别到里面才翻包。</div>
+</section>
+
+<section class="card day">
+  <div class="day-head">
+    <div><div class="num">DAY 04</div><h3>荔波 · 地球腰带绿宝石</h3><div class="date">10月6日 · 周一</div></div>
+  </div>
+  <div class="wx">
+    <div class="wx-t">25°<small>/</small>17°<small>C</small></div>
+    <div class="wx-info"><div class="cond">荔波 · 多云 · 比贵阳暖 4-5°C · 湿度高</div><b>穿搭:</b> 短袖 T + 薄开衫,长裤/速干裤,<b>快干登山鞋或凉鞋</b>(水上森林踩水必湿),备一双袜子。防蚊液 + 防晒霜必带。</div>
+  </div>
+  <div class="metro"><b>去程</b> 酒店 → <span class="line1">1号线</span> 观山湖公园 → 贵阳北 · 15min · 或打车 25 元。<br><b>荔波站 → 小七孔</b> 站前<b>景区直通车</b>专柜排队上车,40min · 25 元/单程。<br><b>回程</b> 东门出景区 → 直通车返荔波站 → 高铁 → <span class="line1">1号线</span>回酒店。</div>
+  <div class="sec"><div class="sec-t">— 交 通 —</div>
+    <ul><li><b>贵阳北 → 荔波站</b> 高铁 <b>1h30min</b>(贵南高铁),早班 <b>G2967 · 07:52</b> 首选</li>
+    <li>返程末班高铁约 <b>20:00 左右</b>,建议 18:30 前那趟锁定</li>
+    <li>门票 + 观光车联票约 <b>170 元</b>,官方公众号 <b>提前 3 天</b>预约</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
+    <dl class="itin">
+      <dt>06:30</dt><dd>起床,打车贵阳北站</dd>
+      <dt>07:52</dt><dd>高铁发车</dd>
+      <dt>09:25</dt><dd>抵荔波站,直通车赴景区</dd>
+      <dt>10:10</dt><dd><b>西门入园</b>(重要!西进东出顺流下坡,最省力)</dd>
+      <dt>10:20</dt><dd><b>小七孔古桥</b>(200 年清代石拱桥,朋友圈封面)</dd>
+      <dt>10:45</dt><dd><b>拉雅瀑布</b> · 走瀑布下方栈道,水雾扑面出片</dd>
+      <dt>11:15</dt><dd><b>68 级跌水瀑布</b> · 层层水帘,沿栈道慢走</dd>
+      <dt>12:30</dt><dd>观光车至<b>水上森林</b>入口,景区内简餐</dd>
+      <dt>13:30</dt><dd><b>水上森林</b>(全程 <b>亮点</b>) · 赤脚踩水穿林 1h,鞋袋装鞋</dd>
+      <dt>15:00</dt><dd><b>卧龙潭</b> · 翡翠色深水潭,看瀑布倒影</dd>
+      <dt>15:45</dt><dd><b>鸳鸯湖</b> · 可加钱划船,累了跳过</dd>
+      <dt>16:30</dt><dd>东门出园,直通车返荔波站</dd>
+      <dt>18:30</dt><dd>荔波站上高铁</dd>
+      <dt>20:00</dt><dd>抵贵阳北,打车回酒店</dd>
+      <dt>20:30</dt><dd>晚餐 · 见下方吃货块</dd>
+    </dl>
+  </div>
+  <div class="eats">
+    <div class="eats-t">— 荔 波 归 来 · 不 折 腾 —</div>
+    <ul>
+      <li><b>景区午餐</b> · 水上森林 / 卧龙潭区内简餐 · 樟江鱼 + 荔波酸肉,价格略贵但省时间</li>
+      <li><b>贵阳北站边</b> 高铁到站直接吃 · <b>罗记牛肉粉</b> 24h 分店 · 一碗回魂</li>
+      <li><b>酒店周边</b> · 悦然广场 <b>沙锅粉/砂锅饭</b>连锁,20 元搞定</li>
+      <li>累到不想出门 · 便利店买<b>老干妈拌面</b>+ 刺梨汁,床上解决</li>
+    </ul>
+  </div>
+  <div class="tip">荔波是本行程最重的一天,当日往返 <b>4h 高铁 + 6h 景区</b>,预留体力。水上森林是灵魂,不要跳过。带塑料袋装湿鞋。若身体扛不住,可跳过鸳鸯湖直接出园。</div>
+</section>
+
+<section class="card day">
+  <div class="day-head">
+    <div><div class="num">DAY 05</div><h3>凯里 1 日 · 苗侗风土 + 逛吃</h3><div class="date">10月7日 · 周二</div></div>
+  </div>
+  <div class="wx">
+    <div class="wx-t">23°<small>/</small>15°<small>C</small></div>
+    <div class="wx-info"><div class="cond">凯里 · 多云 · 秋高气爽</div><b>穿搭:</b> 长袖 T + 薄开衫/衬衫,舒服的长裤/阔腿裤,运动鞋。逛街拍照日,穿点<b>棉麻/苗侗风</b>出片。</div>
+  </div>
+  <div class="metro"><b>去程</b> 酒店打车 → 贵阳北站 · 15min 25 元 · 或 <span class="line1">1号线</span> 观山湖公园直达贵阳北。<br><b>高铁</b> 贵阳北 → 凯里南 · <b>G1503 · 08:15</b> · 40min · 60 元。<br><b>凯里内</b> 全程网约车/出租车,起步 8 元,城区打车 10-20 元封顶。</div>
+  <div class="sec"><div class="sec-t">— 定 位 —</div>
+    <ul><li>荔波硬仗次日,<b>安排轻度但有味道的一天</b>,不走硬景点</li>
+    <li>只在凯里市区 + 近郊,粉店早餐 + 酸汤鱼午餐 + 苗侗博物馆 + 银饰街</li>
+    <li><b>不去西江千户苗寨</b>(需要 2h 车程 + 门票),留时间给逛吃</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 交 通 —</div>
+    <ul><li><b>贵阳北 → 凯里南</b> 高铁 <b>08:15 G1503</b> · 40min · 60 元</li>
+    <li>凯里南站 → 市区 · 打车 20min 30 元</li>
+    <li><b>凯里南 → 贵阳北</b> 返程 · 17:00 - 18:30 班次多</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
+    <dl class="itin">
+      <dt>07:00</dt><dd>起床,打车贵阳北</dd>
+      <dt>08:15</dt><dd>高铁发车</dd>
+      <dt>09:00</dt><dd>抵凯里南,打车进市区(20min)</dd>
+      <dt>09:30</dt><dd><b>早餐 · 粉店</b>随选一家(见下方吃货块),现场感受本地早市</dd>
+      <dt>10:30</dt><dd><b>大十字 / 苗侗风情园</b> 步行逛街,看银饰店 + 蜡染工坊,可买伴手礼</dd>
+      <dt>12:00</dt><dd><b>午餐 · 酸汤鱼 or 酸汤牛肉</b>(重头戏,坐下慢吃 1.5h)</dd>
+      <dt>14:00</dt><dd><b>凯里民族博物馆</b> · 免费 · 苗侗银饰蜡染文物 · 消食 1h</dd>
+      <dt>15:00</dt><dd><b>下司古镇</b>(可选加码) · 距凯里 30min 车程 · 有"小上海"之称,清水江边石板古街,不去也无遗憾</dd>
+      <dt></dt><dd>或者:市区<b>金泉湖公园</b>散步 · 咖啡馆坐一坐</dd>
+      <dt>16:30</dt><dd>打车凯里南站,买伴手礼<b>雷公山银球茶 + 折耳根辣椒</b></dd>
+      <dt>17:30</dt><dd>凯里南 → 贵阳北,高铁 40min</dd>
+      <dt>18:15</dt><dd>抵贵阳,回观山湖酒店</dd>
+      <dt>19:30</dt><dd>晚餐 · 酒店周边简餐(见下方)</dd>
+    </dl>
+  </div>
+  <div class="eats">
+    <div class="eats-t">— 凯 里 逛 吃 清 单 —</div>
+    <ul>
+      <li><b>早餐 · 粉店</b>(任选一家)</li>
+      <li>&nbsp;&nbsp;<b>火车站鹅肉粉</b> · 凯里火车站周边 · 鹅肉高汤配米粉,最经典</li>
+      <li>&nbsp;&nbsp;<b>州车队双烧粉</b> · 老州车队附近 · 烧牛肉 + 烧肠双拼</li>
+      <li>&nbsp;&nbsp;<b>张老鬼猪脚粉</b> · 汤浓 · 早市限定</li>
+      <li>&nbsp;&nbsp;<b>棉纺厂桥头牛肉粉</b> · 老棉纺厂桥头 · 老地名,导航搜店名</li>
+      <li>&nbsp;&nbsp;<b>九小门口鸭子粉</b> · 九小学门口</li>
+      <li>&nbsp;&nbsp;<b>贵都名门糟辣粉</b> · 糟辣椒是精髓</li>
+      <li><b>午餐 · 酸汤主场</b></li>
+      <li>&nbsp;&nbsp;<b>酸汤鱼</b> · 菩萨寨路口 / 火车站码头桥上桥头 · 稻花鱼 + 番茄酸汤</li>
+      <li>&nbsp;&nbsp;<b>苗岭牛肉</b>(酸汤牛肉) · 凯运大道十七小对面</li>
+      <li>&nbsp;&nbsp;<b>下司酸汤</b>(酸汤牛肉) · 二小加油站对面</li>
+      <li><b>贵阳返程晚餐</b> · <b>亮欢寨</b>观山湖分店(酸汤鱼) · 或酒店周边<b>新大新豆米火锅</b></li>
+    </ul>
+  </div>
+  <div class="tip">凯里粉店多用<b>老地名</b>(棉纺厂/九小/州车队),导航直接搜店名。国庆错峰吃早市,10:00 前进店不排队。酸汤鱼是<b>黔东南苗族国宴级</b>,别在西江苗寨吃"游客版",凯里市区正宗且便宜。加码下司古镇看兴趣,不加码<b>下午 3 点就可以打道回府</b>更轻松。</div>
+</section>
+
+<section class="card day">
+  <div class="day-head">
+    <div><div class="num">DAY 06</div><h3>黄果树 · 亚洲第一瀑</h3><div class="date">10月8日 · 周三</div></div>
+  </div>
+  <div class="wx">
+    <div class="wx-t">21°<small>/</small>13°<small>C</small></div>
+    <div class="wx-info"><div class="cond">安顺 · 多云 · 瀑布区体感更凉 · 水量充沛</div><b>穿搭:</b> 速干 T + 薄防风外套,长裤,<b>防滑运动鞋 + 备用袜子</b>。<b>一次性雨衣必带</b>(水帘洞湿身警告)。手机装防水袋。</div>
+  </div>
+  <div class="metro"><b>去程</b> 酒店 → <span class="line1">1号线</span> 观山湖公园 → 贵阳北 · 15min · 或打车 25 元。<br><b>安顺西 → 景区</b> 站前<b>景区直通车</b>专柜,40min · 30 元/单程。<br><b>景区内</b> 陡坡塘/天星桥/大瀑布三片必坐<b>景区大巴</b>(票内含,强制)。</div>
+  <div class="sec"><div class="sec-t">— 交 通 —</div>
+    <ul><li><b>贵阳北 → 安顺西</b> 高铁 30min,早班 <b>D8517 · 07:24</b> / <b>G1477 · 07:56</b></li>
+    <li>门票 + 观光车约 <b>210 元</b>,公众号 <b>提前 3 天</b>预约</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 三 景 区 顺 序 —</div>
+    <ul><li><b>陡坡塘</b>(1h) 《西游记》片尾曲取景地 · 宽度 105m 大瀑布 · 先热身</li>
+    <li><b>天星桥</b>(2.5h) 水上石林 · <b>数生步</b>踩生日日期石 · 银链坠潭瀑</li>
+    <li><b>大瀑布</b>(2h)压轴 · <b>水帘洞</b>穿瀑而过 · 犀牛潭看正面</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
+    <dl class="itin">
+      <dt>06:30</dt><dd>起床,打车贵阳北站</dd>
+      <dt>07:24</dt><dd>高铁发车</dd>
+      <dt>08:00</dt><dd>抵安顺西,直通车赴景区</dd>
+      <dt>09:00</dt><dd>抵游客中心,先坐大巴去<b>陡坡塘</b></dd>
+      <dt>10:30</dt><dd>大巴 → <b>天星桥</b> · 数生步慢慢踩 · 天星洞 · 银链坠潭</dd>
+      <dt>13:00</dt><dd>景区餐厅简餐(黄果树园区内,不出景区,省时间)</dd>
+      <dt>14:00</dt><dd>大巴 → <b>大瀑布</b>景区,先走观景台看全景</dd>
+      <dt>15:00</dt><dd><b>水帘洞</b>穿瀑 · 湿身必备雨衣 · 六个洞窗看瀑布内侧</dd>
+      <dt>16:30</dt><dd>犀牛潭 + 猴凳岩再看一遍瀑布正面</dd>
+      <dt>17:30</dt><dd>大巴出景区,直通车返安顺西</dd>
+      <dt>19:00</dt><dd>安顺西上高铁</dd>
+      <dt>19:35</dt><dd>抵贵阳北,回酒店</dd>
+      <dt>20:30</dt><dd>晚餐 · 见下方吃货块</dd>
+    </dl>
+  </div>
+  <div class="eats">
+    <div class="eats-t">— 安 顺 & 贵 阳 犒 劳 局 —</div>
+    <ul>
+      <li><b>安顺西站预留 1h</b>(可选) 打车市区 · <b>蒋记大竹签烤肉</b> · <b>杨记牛杂</b> · <b>多财铁板烧</b> 三选一,回站再上车</li>
+      <li>直接回贵阳 · 打车<b>青云市集</b>(<span class="line1">1号线</span>河滨公园 A 口) · 烙锅 + 烤脑花 + 丝娃娃夜宵局</li>
+      <li>不想跑 · 观山湖<b>万象汇</b><b>新大新豆米火锅</b>暖胃收尾</li>
+      <li>累崩 · 便利店<b>丝恋丝娃娃外卖 / 罗记牛肉粉外卖</b></li>
+    </ul>
+  </div>
+  <div class="tip">黄果树三景区大巴强制乘坐,不可自驾进景区。<b>水帘洞</b>是灵魂,再累也要走。国庆水量国内最大级,雨衣不是"以防万一",是"一定会用到"。走路多,穿最舒服的鞋。</div>
+</section>
+
+<section class="card day">
+  <div class="day-head">
+    <div><div class="num">DAY 07</div><h3>黔灵慢游 · 归 京</h3><div class="date">10月9日 · 周四</div></div>
+  </div>
+  <div class="wx">
+    <div class="wx-t">22°<small>/</small>14°<small>C</small></div>
+    <div class="wx-info"><div class="cond">贵阳 · 多云 · 秋高</div><b>穿搭:</b> 舒适路服 · 长袖 T + 薄外套,方便脱穿。<b>行李箱早退房存前台</b>,轻装出门。</div>
+  </div>
+  <div class="metro"><b>黔灵山公园</b> 酒店 → 打车 20min 30 元 · 或 <span class="line1">1号线</span> 观山湖公园 → 黔灵山公园站 · 25min。<br><b>甲秀楼</b>(可选) <span class="line1">1号线</span> 黔灵山公园 → 中山西路 · 20min。<br><b>龙洞堡机场</b> · 酒店直接打车 40min 100 元 · 或 <span class="line3">3号线</span> 观山湖公园 → 龙洞堡站 · 50min 5 元(最省)。</div>
+  <div class="sec"><div class="sec-t">— 定 位 —</div>
+    <ul><li><b>轻松收尾日</b> · 下午 18:00 龙洞堡机场航班</li>
+    <li>上午黔灵公园慢走 + 猕猴合影 + 老贵阳早茶,下午午餐 + 提早去机场</li>
+    <li><b>不出贵阳市区</b>,预留 3h 机场缓冲,国庆返程日必留</li></ul>
+  </div>
+  <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
+    <dl class="itin">
+      <dt>08:30</dt><dd>起床,酒店吃早餐或退房前搞定,行李寄存前台</dd>
+      <dt>09:30</dt><dd>打车 → <b>黔灵山公园</b>,门票 5 元 · 老贵阳"城市绿肺"</dd>
+      <dt>10:00</dt><dd><b>弘福寺</b>登山 + <b>猕猴群</b>(网红打卡) · 山顶俯瞰贵阳全景</dd>
+      <dt>11:30</dt><dd>下山,黔灵公园门口<b>黔灵菜市场早市</b>(八鸽岩路)扫街,吃碗<b>糯米饭 / 豆浆油条</b></dd>
+      <dt>12:30</dt><dd><b>午餐 · 亮欢寨酸汤鱼</b>(黔灵山附近店) · 或收官<b>丝娃娃 + 豆米火锅</b>合集</dd>
+      <dt>14:00</dt><dd>回酒店取行李,前台伴手礼打包<b>老干妈 + 刺梨干 + 折耳根辣椒</b></dd>
+      <dt>14:30</dt><dd>出发龙洞堡机场 · <span class="line3">3号线</span>观山湖公园→龙洞堡 · 50min · 或打车 40min</dd>
+      <dt>15:30</dt><dd>抵机场,值机 + 安检</dd>
+      <dt>16:30</dt><dd>候机楼吃碗<b>肠旺面 / 罗记牛肉粉</b>(机场店)最后一碗</dd>
+      <dt>18:00</dt><dd><b>航班起飞</b> · 龙洞堡 → 北京</dd>
+    </dl>
+  </div>
+  <div class="eats">
+    <div class="eats-t">— 收 官 · 老 贵 阳 味 道 —</div>
+    <ul>
+      <li><b>黔灵菜市场早市</b> · 云岩区八鸽岩路 · 黔灵公园山脚 · 糯米饭/豆浆/丝娃娃/肠旺面本地人食堂</li>
+      <li><b>亮欢寨酸汤鱼</b> · 黔灵山分店 · 收官再吃一顿番茄酸汤鱼</li>
+      <li><b>丝恋丝娃娃</b>(万象汇分店) · 若懒得跨区,酒店旁解决</li>
+      <li><b>伴手礼</b> · <b>老干妈</b>(超市便宜) · <b>刺梨干/刺梨汁</b> · <b>折耳根辣椒</b> · <b>贵州茅台镇小酒</b></li>
+    </ul>
+  </div>
+  <div class="tip">18:00 航班对应<b>16:00 值机截止 / 17:30 登机</b>,反推 <b>15:30 到机场</b>最稳,酒店 <b>14:30 出发</b>留足打车高峰缓冲。国庆返程日贵阳机场排队夸张,别贪多。若上午不想爬山,直接酒店睡到 11:00,吃个午餐去机场也行。</div>
+</section>
+
+
+<section class="footer-tips">
+  <h2>行前贴士 · 硬核版</h2>
+  <div class="tip-grid">
+    <div class="tip-card"><h4>核 心 温 度</h4><p>贵阳白天 <b>20-22°C</b>、夜 13-15°C。荔波比贵阳<b>暖 4-5°C</b>(白天 25°C)。织金洞/黄果树体感更凉。始终<b>洋葱式穿搭</b>。</p></div>
+    <div class="tip-card"><h4>提 前 预 约</h4><p>黄果树/小七孔/织金洞 国庆<b>提前 3 天</b>公众号实名预约,否则进不去。高铁票节前<b>15 天</b>放票立刻抢。</p></div>
+    <div class="tip-card"><h4>轻 松 关 键</h4><p>大本营不动、荔波与黄果树中间插凯里逛吃日、天河潭下午留白、末日黔灵慢游<b>18:00</b>航班——四条铁律,是本行程"不太累"的核心。</p></div>
+    <div class="tip-card"><h4>穿 鞋 铁 律</h4><p>全程一双<b>防滑运动鞋/轻徒步鞋</b> + 一双<b>快干凉鞋</b>(水上森林专用)。别穿新鞋,磨脚崩盘。</p></div>
+    <div class="tip-card"><h4>雨 具</h4><p>贵州十月<b>阴雨概率 40%</b>,折叠伞 + 一次性雨衣备着。黄果树水帘洞是"一定湿",不是"可能湿"。</p></div>
+    <div class="tip-card"><h4>饮 食 警 示</h4><p>贵州菜<b>酸辣</b>为主,肠胃敏感者备好药。<b>折耳根</b>(鱼腥草)高概率不受用,先小口试。刺梨汁降火可常喝。</p></div>
+    <div class="tip-card"><h4>贵 阳 三 站</h4><p><b>贵阳北</b>(高铁主站,离林城西路 15min) / <b>贵阳东</b>(部分动车) / <b>龙洞堡机场</b>(地铁 3 号线直达)。买票别看错站。</p></div>
+    <div class="tip-card"><h4>返 京 缓 冲</h4><p>10.9 返京日高铁/航班晚点概率极高,<b>预留 3h</b>缓冲。别订当天晚上有事的活动。</p></div>
+  </div>
+</section>
+
+<section class="sources">
+  <h4>— 数 据 来 源 —</h4>
+  贵州各地十月上旬气温参考自:<br>
+  · <a href="https://weather.com/zh-CN/weather/monthly/l/Libo+County+Guizhou+558400?canonicalCityId=6d7c9c19ce9688f6693320f9b8c98697" target="_blank">Weather.com · 荔波县月度天气预报</a><br>
+  · <a href="https://weather.com/zh-CN/weather/monthly/l/7c31c72e3317d2282e4495e1495f3a84f7ba9effaadfb78a8184c57875f0064c" target="_blank">Weather.com · 贵阳市月度天气预报</a><br>
+  · <a href="https://weather.com/zh-CN/weather/monthly/l/2da25550e53f95dac2c6e63ab3180741fb5751f780f3420e57813c61cdce288c" target="_blank">Weather.com · 六盘水市月度天气预报(邻近参考)</a><br>
+  高铁班次为参考,以 <b>12306</b> 出行当日实际为准。景区门票以 <b>官方公众号</b>预约页为准。
+</section>
+
+</div>
+<footer>黔行 · 七日 · 2026 国庆 · 山水苗寨,好好玩</footer>
+</body>
+</html>
