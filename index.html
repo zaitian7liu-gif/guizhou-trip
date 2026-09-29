@@ -882,5 +882,49 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   }
 })();
 </script>
+
+<script>
+(function(){
+  // 手机端:高德 uri.amap.com 中间页会丢参数,落到 App 首页。
+  // 拦截 rbtn 点击,拼原生 scheme(带坐标直接进 App 路线规划),1.2s 未唤起则回退网页版。
+  var isMobile=/android|iphone|ipad|ipod|harmony/i.test(navigator.userAgent);
+  if(!isMobile)return;
+  var TMAP={car:0,bus:1,walk:2};
+  function parse(href){
+    var q={};
+    (href.split('?')[1]||'').split('&').forEach(function(kv){
+      var i=kv.indexOf('='),k=kv.slice(0,i),v=kv.slice(i+1);
+      if(k)q[k]=v;
+    });
+    return q;
+  }
+  // from/to 格式: lon,lat,name(name 已 encode)
+  function pt(s){var a=(s||'').split(',');return{lon:a[0],lat:a[1],name:a[2]||''}}
+  document.querySelectorAll('a.rbtn').forEach(function(a){
+    var q=parse(a.getAttribute('href'));
+    if(!q.from||!q.to)return;
+    var f=pt(q.from),t=pt(q.to);
+    var mode=(a.href.match(/mode=(\w+)/)||[])[1]||'car';
+    var scheme='amap://route/plan?sourceApplication=guizhou7&dev=0'
+      +'&slat='+f.lat+'&slon='+f.lon+'&sname='+f.name
+      +'&dlat='+t.lat+'&dlon='+t.lon+'&dname='+t.name
+      +'&t='+(TMAP[mode]!=null?TMAP[mode]:0);
+    var web=a.href;
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      var t0=Date.now();
+      // 未装 App:唤起失败,页面仍在前台 → 回退网页版
+      var timer=setTimeout(function(){
+        if(Date.now()-t0<1600&&!document.hidden)window.location.href=web;
+      },1200);
+      // 唤起成功(切到 App)→ 页面隐藏,取消回退
+      document.addEventListener('visibilitychange',function h(){
+        if(document.hidden){clearTimeout(timer);document.removeEventListener('visibilitychange',h)}
+      });
+      window.location.href=scheme;
+    });
+  });
+})();
+</script>
 </body>
 </html>
