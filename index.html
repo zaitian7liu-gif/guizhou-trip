@@ -24,7 +24,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans G
 .overview h2{font-size:30px;margin-bottom:12px;letter-spacing:2px}
 .overview .lead{color:#555;font-size:15px;margin-bottom:28px;line-height:1.9}
 .timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
-.tl-day{background:linear-gradient(180deg,#f5f1e4,#ebe4d0);padding:18px 6px 16px;border-radius:12px;text-align:center;border:1px solid #e8dfc7;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden}
+html{scroll-behavior:smooth}
+.card.day{scroll-margin-top:20px}
+.tl-day{background:linear-gradient(180deg,#f5f1e4,#ebe4d0);padding:18px 6px 16px;border-radius:12px;text-align:center;border:1px solid #e8dfc7;transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;text-decoration:none;color:inherit;display:block;cursor:pointer}
+.tl-day:hover .d{color:var(--mid)}
+.tl-day::after{content:"→";position:absolute;bottom:6px;right:8px;color:var(--mid);opacity:0;font-size:12px;font-weight:700;transition:opacity .2s}
+.tl-day:hover::after{opacity:.6}
 .tl-day::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--mid)}
 .tl-day.c1::before{background:var(--chill)}
 .tl-day.c2::before{background:var(--heavy)}
@@ -120,17 +125,17 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <h2>行程概览</h2>
   <p class="lead">住宿固定在观山湖林城西路,每晚回酒店。用户指定 10.6 荔波、10.8 黄果树,中间 10.7 安排休闲日缓冲。累的重头戏之间必插一日轻度,保证不掉血。全程高铁往返 + 景区直通车,不折腾。</p>
   <div class="timeline">
-    <div class="tl-day c1"><div class="d">10.03</div><div class="w">FRI</div><div class="t">京→贵阳<br>抵 达</div></div>
-    <div class="tl-day c1"><div class="d">10.04</div><div class="w">SAT</div><div class="t">天河潭<br>半 日</div></div>
-    <div class="tl-day"><div class="d">10.05</div><div class="w">SUN</div><div class="t">织金洞<br>一 日</div></div>
-    <div class="tl-day c2"><div class="d">10.06</div><div class="w">MON</div><div class="t">荔 波<br>小七孔</div></div>
-    <div class="tl-day"><div class="d">10.07</div><div class="w">TUE</div><div class="t">凯 里<br>逛 吃</div></div>
-    <div class="tl-day c2"><div class="d">10.08</div><div class="w">WED</div><div class="t">黄果树<br>瀑 布</div></div>
-    <div class="tl-day c1"><div class="d">10.09</div><div class="w">THU</div><div class="t">黔灵公园<br>返 京</div></div>
+    <a href="#day1" class="tl-day c1"><div class="d">10.03</div><div class="w">FRI</div><div class="t">京→贵阳<br>抵 达</div></a>
+    <a href="#day2" class="tl-day c1"><div class="d">10.04</div><div class="w">SAT</div><div class="t">天河潭<br>半 日</div></a>
+    <a href="#day3" class="tl-day"><div class="d">10.05</div><div class="w">SUN</div><div class="t">织金洞<br>一 日</div></a>
+    <a href="#day4" class="tl-day c2"><div class="d">10.06</div><div class="w">MON</div><div class="t">荔 波<br>小七孔</div></a>
+    <a href="#day5" class="tl-day"><div class="d">10.07</div><div class="w">TUE</div><div class="t">凯 里<br>逛 吃</div></a>
+    <a href="#day6" class="tl-day c2"><div class="d">10.08</div><div class="w">WED</div><div class="t">黄果树<br>瀑 布</div></a>
+    <a href="#day7" class="tl-day c1"><div class="d">10.09</div><div class="w">THU</div><div class="t">黔灵公园<br>返 京</div></a>
   </div>
 </section>
 
-<section class="card day">
+<section class="card day" id="day1">
   <div class="day-head">
     <div><div class="num">DAY 01</div><h3>抵黔 · 观山湖落脚</h3><div class="date">10月3日 · 周五</div></div>
   </div>
@@ -163,7 +168,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="tip">到贵阳当天绝不安排景点,防止路上疲惫叠加轻微海拔反应(贵阳 1100m 海拔)。观山湖是贵阳新政务中心,酒店密集、便利店/商场步行可达,首日大本营。</div>
 </section>
 
-<section class="card day">
+<section class="card day" id="day2">
   <div class="day-head">
     <div><div class="num">DAY 02</div><h3>天河潭 · 山水浓缩版</h3><div class="date">10月4日 · 周六</div></div>
   </div>
@@ -202,7 +207,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="tip">天河潭半日足够,是"贵州山水浓缩",强度极低,当作热身。下午 2h 午睡不省,后面 5 天硬仗打不下。甲秀楼夜景 + 青云市集串成夜游线,是贵阳城市味道的合集。</div>
 </section>
 
-<section class="card day">
+<section class="card day" id="day3">
   <div class="day-head">
     <div><div class="num">DAY 03</div><h3>织金洞 · 溶洞之王</h3><div class="date">10月5日 · 周日</div></div>
   </div>
@@ -242,7 +247,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="tip">"黄山归来不看岳,织金归来不看洞。"中国国家地理评选<b>六大最美溶洞之首</b>。洞内手机基本无信号,想拍照带广角/大光圈。洞里冷,进去前把外套穿上,别到里面才翻包。</div>
 </section>
 
-<section class="card day">
+<section class="card day" id="day4">
   <div class="day-head">
     <div><div class="num">DAY 04</div><h3>荔波 · 地球腰带绿宝石</h3><div class="date">10月6日 · 周一</div></div>
   </div>
@@ -287,7 +292,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="tip">荔波是本行程最重的一天,当日往返 <b>4h 高铁 + 6h 景区</b>,预留体力。水上森林是灵魂,不要跳过。带塑料袋装湿鞋。若身体扛不住,可跳过鸳鸯湖直接出园。</div>
 </section>
 
-<section class="card day">
+<section class="card day" id="day5">
   <div class="day-head">
     <div><div class="num">DAY 05</div><h3>凯里 1 日 · 苗侗风土 + 逛吃</h3><div class="date">10月7日 · 周二</div></div>
   </div>
@@ -343,7 +348,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="tip">凯里粉店多用<b>老地名</b>(棉纺厂/九小/州车队),导航直接搜店名。国庆错峰吃早市,10:00 前进店不排队。酸汤鱼是<b>黔东南苗族国宴级</b>,别在西江苗寨吃"游客版",凯里市区正宗且便宜。加码下司古镇看兴趣,不加码<b>下午 3 点就可以打道回府</b>更轻松。</div>
 </section>
 
-<section class="card day">
+<section class="card day" id="day6">
   <div class="day-head">
     <div><div class="num">DAY 06</div><h3>黄果树 · 亚洲第一瀑</h3><div class="date">10月8日 · 周三</div></div>
   </div>
@@ -390,7 +395,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="tip">黄果树三景区大巴强制乘坐,不可自驾进景区。<b>水帘洞</b>是灵魂,再累也要走。国庆水量国内最大级,雨衣不是"以防万一",是"一定会用到"。走路多,穿最舒服的鞋。</div>
 </section>
 
-<section class="card day">
+<section class="card day" id="day7">
   <div class="day-head">
     <div><div class="num">DAY 07</div><h3>黔灵慢游 · 归 京</h3><div class="date">10月9日 · 周四</div></div>
   </div>
