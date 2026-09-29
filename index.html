@@ -148,6 +148,64 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .wx-t a{color:inherit;text-decoration:none;border-bottom:1.5px dotted var(--gold);transition:all .15s;padding-bottom:2px}
 .wx-t a:hover{color:var(--heavy);border-bottom-color:var(--heavy);border-bottom-style:solid}
 .wx-t a::after{content:"↗";font-size:.55em;margin-left:3px;opacity:.55;vertical-align:super}
+
+/* ==== 暗黑模式 ==== */
+@media(prefers-color-scheme:dark){
+  :root{--paper:#1a1f1c;--ink:#e8dfc7}
+  body{color:#d5cba6;background:#12161a}
+  .card{background:#1e2723;box-shadow:0 10px 40px rgba(0,0,0,.3)}
+  .card+.card::before{background:#12161a}
+  .overview h2,.day h3,.day-head h3,.overview .lead,.sec p,.sec li,.itin dd,.eats li b,.metro b,.wx-t{color:#e8dfc7 !important}
+  .overview .lead{color:#a8a08c !important}
+  .sec li b{color:#f5deac !important}
+  .tl-day{background:linear-gradient(180deg,#2a2f2b,#20241f);border-color:#3a3f3b;color:#d5cba6}
+  .tl-day .d{color:#d4a944}
+  .tl-day .t{color:#b5ac96}
+  .wx{background:linear-gradient(135deg,#1e2a34,#1a2530);border-color:#2f4050}
+  .wx-info{color:#c5bda8}
+  .wx-info .cond{background:rgba(0,0,0,.3);color:#8fb0c4}
+  .eats{background:linear-gradient(135deg,#2d1f14,#3a2818);border-color:#8b5a3a}
+  .eats li{color:#e5c8a8}
+  .metro{background:linear-gradient(135deg,#1c2a22,#1a2620);border-color:var(--chill);color:#a8c9b5}
+  .tip{background:linear-gradient(135deg,#3a3220,#2a2418);color:#e5c88a}
+  .itin dd{color:#c5bda8}
+  .itin dt,.itin dd{border-color:#3a3f3b}
+  .day-head{border-color:rgba(212,169,68,.3)}
+  .amap-link{border-color:#7ba896}
+  .rbtn.car{background:#3a2418;color:#e5b090;border-color:#8b5a3a}
+  .rbtn.transit{background:#1c2a34;color:#8fb0c4;border-color:#3a5a70}
+  .rbtn.bus{background:#1c2a22;color:#8fb59e;border-color:#3a5a4a}
+  .checklist li.pk label:hover{background:rgba(212,169,68,.15)}
+  .checklist li.pk input{background:#1e2723}
+  .checklist li.pk span{color:#c5bda8}
+}
+/* ==== 返回顶部 ==== */
+#backtop{position:fixed;bottom:30px;right:24px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--mid),#b48920);color:#fff;border:none;font-size:22px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(139,105,20,.35);z-index:99;opacity:0;transform:translateY(20px);pointer-events:none;transition:all .25s}
+#backtop.on{opacity:1;transform:translateY(0);pointer-events:auto}
+#backtop:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(139,105,20,.5)}
+/* ==== 首屏景区快跳 ==== */
+.quickjump{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px}
+.qj{background:linear-gradient(180deg,#fff,#f5f1e4);border:1px solid #e8dfc7;border-radius:14px;padding:16px 8px;text-align:center;text-decoration:none;color:inherit;transition:all .2s;cursor:pointer;display:block}
+.qj:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(30,77,43,.12);border-color:var(--mid)}
+.qj .emo{font-size:32px;display:block;margin-bottom:6px;line-height:1}
+.qj .nm{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:1px}
+.qj .dt{font-size:11px;color:var(--gold);margin-top:4px;letter-spacing:1px}
+@media(prefers-color-scheme:dark){.qj{background:linear-gradient(180deg,#2a2f2b,#20241f);border-color:#3a3f3b}.qj .nm{color:#e8dfc7}}
+@media(max-width:640px){.quickjump{grid-template-columns:repeat(3,1fr)}}
+/* ==== 当日高亮 ==== */
+.card.day.today{border-left-color:var(--heavy);box-shadow:0 10px 40px rgba(200,110,74,.25),0 0 0 3px rgba(200,110,74,.15)}
+.card.day.today::before{background:var(--heavy);box-shadow:0 0 0 2px var(--heavy),0 0 30px rgba(200,110,74,.6)}
+.today-badge{display:inline-block;background:var(--heavy);color:#fff;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:2px;margin-left:10px;vertical-align:middle;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+/* ==== 动线 mini map ==== */
+.route-map{background:linear-gradient(135deg,#f5f1e4,#ebe4d0);border-radius:12px;padding:16px 20px;margin:16px 0;border:1px dashed #d5cba6}
+.route-map-t{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:3px;margin-bottom:10px}
+.route-map-chain{display:flex;align-items:center;flex-wrap:wrap;gap:4px 8px;font-size:13.5px;color:#3d3d3d}
+.route-map-chain .node{background:#fff;border:1.5px solid var(--mid);padding:4px 12px;border-radius:100px;color:var(--ink);font-weight:600;letter-spacing:.5px;transition:all .15s;cursor:default;white-space:nowrap}
+.route-map-chain .node.start{border-color:var(--chill);background:rgba(95,168,134,.1)}
+.route-map-chain .node.end{border-color:var(--heavy);background:rgba(200,110,74,.1)}
+.route-map-chain .arr{color:var(--mid);font-weight:700;font-size:14px}
+@media(prefers-color-scheme:dark){.route-map{background:linear-gradient(135deg,#2a2418,#2a2318);border-color:#5a4a2a}.route-map-chain{color:#c5bda8}.route-map-chain .node{background:#1e2723;color:#e8dfc7}}
 </style>
 </head>
 <body>
@@ -177,6 +235,16 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
     <a href="#day6" class="tl-day c2"><div class="d">10.08</div><div class="w">WED</div><div class="t">黄果树<br>瀑 布</div></a>
     <a href="#day7" class="tl-day c1"><div class="d">10.09</div><div class="w">THU</div><div class="t">黔灵公园<br>返 京</div></a>
   </div>
+
+  <div style="font-size:12px;color:#8b6914;font-weight:700;letter-spacing:3px;margin-top:32px;margin-bottom:10px">— 五 大 景 区 快 跳 —</div>
+  <div class="quickjump">
+    <a href="#day2" class="qj"><span class="emo">🏞</span><span class="nm">天河潭</span><span class="dt">10.04</span></a>
+    <a href="#day3" class="qj"><span class="emo">🕳</span><span class="nm">织金洞</span><span class="dt">10.05</span></a>
+    <a href="#day4" class="qj"><span class="emo">🌊</span><span class="nm">荔波小七孔</span><span class="dt">10.06</span></a>
+    <a href="#day5" class="qj"><span class="emo">🍜</span><span class="nm">凯 里</span><span class="dt">10.07</span></a>
+    <a href="#day6" class="qj"><span class="emo">💦</span><span class="nm">黄果树</span><span class="dt">10.08</span></a>
+  </div>
+
 </section>
 
 <div class="container-inner"></div>
@@ -186,6 +254,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="day-head">
     <div><div class="num">DAY 01</div><h3>抵黔 · 观山湖落脚</h3><div class="date">10月3日 · 周五</div></div>
   </div>
+  <div class="route-map"><div class="route-map-t">🗺 抵 达 · 动 线</div><div class="route-map-chain"><span class="node start">北京</span><span class="arr">→</span><span class="node">龙洞堡机场</span><span class="arr">→</span><span class="node end">汉庭酒店</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260101.shtml" target="_blank" rel="noopener" title="点看天气详情">22°<small>/</small>14°<small>C</small></a></div>
     <div class="wx-info"><div class="cond">多云间阴 · 或有阵雨</div><br><b>穿搭:</b> 长袖 T + 薄外套/防风夹克,长裤,舒适休闲鞋。<b>随身:</b> 折叠伞 + 充电宝。10 月贵阳雨说下就下,伞常备。</div>
@@ -224,6 +293,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="day-head">
     <div><div class="num">DAY 02</div><h3>天河潭 · 山水浓缩版</h3><div class="date">10月4日 · 周六</div></div>
   </div>
+  <div class="route-map"><div class="route-map-t">🗺 今 日 · 动 线</div><div class="route-map-chain"><span class="node start">酒店</span><span class="arr">→</span><span class="node">天河潭</span><span class="arr">→</span><span class="node">甲秀楼</span><span class="arr">→</span><span class="node end">青云市集</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260101.shtml" target="_blank" rel="noopener" title="点看天气详情">21°<small>/</small>13°<small>C</small></a></div>
     <div class="wx-info"><div class="cond">多云 · 洞穴段体感 15°C</div><br><b>穿搭:</b> 长袖 + 薄外套,长裤,<b>防滑徒步鞋</b>(景区多石板 + 湿滑水洞)。备伞。</div>
@@ -269,6 +339,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="day-head">
     <div><div class="num">DAY 03</div><h3>织金洞 · 溶洞之王</h3><div class="date">10月5日 · 周日</div></div>
   </div>
+  <div class="route-map"><div class="route-map-t">🗺 今 日 · 动 线</div><div class="route-map-chain"><span class="node start">酒店</span><span class="arr">→</span><span class="node">贵阳北</span><span class="arr">→</span><span class="node">织金洞</span><span class="arr">→</span><span class="node">贵阳北</span><span class="arr">→</span><span class="node end">酒店</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260112.shtml" target="_blank" rel="noopener" title="点看天气详情">20°<small>/</small>13°<small>C</small></a></div>
     <div class="wx-info"><div class="cond">多云偶阴 · 洞内恒温 15°C 湿度高</div><br><b>穿搭:</b> 长袖 T + <b>摇粒绒/防风外套</b>(洞内必穿),长裤,<b>防滑运动鞋</b>。洞里凉且滑,别穿凉鞋。</div>
@@ -315,6 +386,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="day-head">
     <div><div class="num">DAY 04</div><h3>荔波 · 地球腰带绿宝石</h3><div class="date">10月6日 · 周一</div></div>
   </div>
+  <div class="route-map"><div class="route-map-t">🗺 今 日 · 动 线</div><div class="route-map-chain"><span class="node start">酒店</span><span class="arr">→</span><span class="node">贵阳北</span><span class="arr">→</span><span class="node">荔波小七孔</span><span class="arr">→</span><span class="node">贵阳北</span><span class="arr">→</span><span class="node end">酒店</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260703.shtml" target="_blank" rel="noopener" title="点看天气详情">25°<small>/</small>17°<small>C</small></a></div>
     <div class="wx-info"><div class="cond">多云 · 比贵阳暖 4-5°C · 湿度高</div><br><b>穿搭:</b> 短袖 T + 薄开衫,长裤/速干裤,<b>快干登山鞋或凉鞋</b>(水上森林踩水必湿),备一双袜子。防蚊液 + 防晒霜必带。</div>
@@ -366,6 +438,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="day-head">
     <div><div class="num">DAY 05</div><h3>凯里 1 日 · 苗侗风土 + 逛吃</h3><div class="date">10月7日 · 周二</div></div>
   </div>
+  <div class="route-map"><div class="route-map-t">🗺 今 日 · 动 线</div><div class="route-map-chain"><span class="node start">酒店</span><span class="arr">→</span><span class="node">凯里南</span><span class="arr">→</span><span class="node">凯里市区</span><span class="arr">→</span><span class="node">凯里南</span><span class="arr">→</span><span class="node end">酒店</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260601.shtml" target="_blank" rel="noopener" title="点看天气详情">23°<small>/</small>15°<small>C</small></a></div>
     <div class="wx-info"><div class="cond">多云 · 秋高气爽</div><br><b>穿搭:</b> 长袖 T + 薄开衫/衬衫,舒服的长裤/阔腿裤,运动鞋。逛街拍照日,穿点<b>棉麻/苗侗风</b>出片。</div>
@@ -428,6 +501,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="day-head">
     <div><div class="num">DAY 06</div><h3>黄果树 · 亚洲第一瀑</h3><div class="date">10月8日 · 周三</div></div>
   </div>
+  <div class="route-map"><div class="route-map-t">🗺 今 日 · 动 线</div><div class="route-map-chain"><span class="node start">酒店</span><span class="arr">→</span><span class="node">安顺西</span><span class="arr">→</span><span class="node">黄果树</span><span class="arr">→</span><span class="node">安顺西</span><span class="arr">→</span><span class="node end">酒店</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260301.shtml" target="_blank" rel="noopener" title="点看天气详情">21°<small>/</small>13°<small>C</small></a></div>
     <div class="wx-info"><div class="cond">多云 · 瀑布区体感更凉 · 水量充沛</div><br><b>穿搭:</b> 速干 T + 薄防风外套,长裤,<b>防滑运动鞋 + 备用袜子</b>。<b>一次性雨衣必带</b>(水帘洞湿身警告)。手机装防水袋。</div>
@@ -481,6 +555,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="day-head">
     <div><div class="num">DAY 07</div><h3>黔灵慢游 · 归 京</h3><div class="date">10月9日 · 周四</div></div>
   </div>
+  <div class="route-map"><div class="route-map-t">🗺 归 京 · 动 线</div><div class="route-map-chain"><span class="node start">酒店</span><span class="arr">→</span><span class="node">黔灵山</span><span class="arr">→</span><span class="node">午餐</span><span class="arr">→</span><span class="node">龙洞堡</span><span class="arr">→</span><span class="node end">北京</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260101.shtml" target="_blank" rel="noopener" title="点看天气详情">22°<small>/</small>14°<small>C</small></a></div>
     <div class="wx-info"><div class="cond">多云 · 秋高</div><br><b>穿搭:</b> 舒适路服 · 长袖 T + 薄外套,方便脱穿。<b>行李箱早退房存前台</b>,轻装出门。</div>
@@ -712,6 +787,36 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){walk(document.body)});
   else walk(document.body);
+})();
+</script>
+
+<button id="backtop" aria-label="返回顶部" title="返回顶部">↑</button>
+<script>
+(function(){
+  // 返回顶部
+  var bt=document.getElementById('backtop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600)bt.classList.add('on');else bt.classList.remove('on');
+  });
+  bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+  // 当日模式
+  var trip={
+    '2025-10-03':'day1','2025-10-04':'day2','2025-10-05':'day3','2025-10-06':'day4',
+    '2025-10-07':'day5','2025-10-08':'day6','2025-10-09':'day7',
+    '2026-10-03':'day1','2026-10-04':'day2','2026-10-05':'day3','2026-10-06':'day4',
+    '2026-10-07':'day5','2026-10-08':'day6','2026-10-09':'day7'
+  };
+  var d=new Date();
+  var iso=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  var todayId=trip[iso];
+  if(todayId){
+    var el=document.getElementById(todayId);
+    if(el){
+      el.classList.add('today');
+      var h3=el.querySelector('.day-head h3');
+      if(h3&&!h3.querySelector('.today-badge'))h3.insertAdjacentHTML('beforeend',' <span class="today-badge">TODAY</span>');
+    }
+  }
 })();
 </script>
 </body>
