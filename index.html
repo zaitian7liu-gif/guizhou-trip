@@ -4,25 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>黔行·七日 · 贵州国庆细致攻略</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--chill:#5fa886;--mid:#d4a944;--heavy:#c86e4a;--ink:#1e4d2b;--paper:#faf7f0;--gold:#8b6914}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#2b2b2b;background:var(--paper);background-image:radial-gradient(circle at 10% 20%,rgba(122,184,154,.06) 0,transparent 40%),radial-gradient(circle at 90% 80%,rgba(212,169,68,.06) 0,transparent 40%);line-height:1.75;-webkit-font-smoothing:antialiased}
+:root{--chill:#5fa886;--mid:#d4a944;--heavy:#c86e4a;--ink:#1e4d2b;--paper:#faf7f0;--gold:#8b6914;--sans:-apple-system,BlinkMacSystemFont,"PingFang SC","HarmonyOS Sans SC","Source Han Sans SC","Noto Sans SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;--serif:"Noto Serif SC","Source Han Serif SC","Songti SC","STSong",serif}
+body{font-family:var(--sans);color:#2b2b2b;background:var(--paper);background-image:radial-gradient(circle at 10% 20%,rgba(122,184,154,.06) 0,transparent 40%),radial-gradient(circle at 90% 80%,rgba(212,169,68,.06) 0,transparent 40%);line-height:1.8;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;text-rendering:optimizeLegibility}
+p,li,dd{font-feature-settings:"palt"}
 .hero{background:linear-gradient(135deg,#1e4d2b 0%,#2d5f3f 45%,#4a7c59 100%);color:#faf7f0;padding:90px 24px 110px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(212,169,68,.18),transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.1),transparent 50%);pointer-events:none}
 .hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent,var(--paper));pointer-events:none}
 .mountains{position:absolute;bottom:60px;left:0;right:0;height:80px;opacity:.15;pointer-events:none}
 .mountains svg{width:100%;height:100%}
-.hero h1{font-size:56px;font-weight:700;letter-spacing:6px;margin-bottom:18px;font-family:"Songti SC","STSong",serif;position:relative;text-shadow:0 2px 20px rgba(0,0,0,.2)}
-.hero .sub{font-size:15px;opacity:.85;letter-spacing:8px;font-weight:300;position:relative}
+.hero h1{font-size:60px;font-weight:600;letter-spacing:10px;margin-bottom:20px;font-family:var(--serif);position:relative;text-shadow:0 2px 20px rgba(0,0,0,.2);padding-left:10px}
+.hero .sub{font-size:13px;opacity:.75;letter-spacing:6px;font-weight:300;position:relative;text-transform:uppercase}
 .hero .deco{width:60px;height:2px;background:#d4a944;margin:28px auto;position:relative}
 .hero .meta{margin-top:8px;display:inline-flex;gap:36px;padding:18px 40px;background:rgba(255,255,255,.1);border-radius:100px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);position:relative;font-size:15px;letter-spacing:2px;flex-wrap:wrap;justify-content:center}
 .container{max-width:1080px;margin:-60px auto 0;padding:0 24px 60px;position:relative;z-index:2}
-.card{background:#fff;border-radius:20px;padding:44px;box-shadow:0 10px 40px rgba(30,77,43,.08);margin-bottom:24px;position:relative}
+.card{background:#fff;border-radius:20px;padding:48px 52px;box-shadow:0 10px 40px rgba(30,77,43,.08);margin-bottom:26px;position:relative}
 .card+.card::before{content:"❋";position:absolute;top:-16px;left:50%;transform:translateX(-50%);color:var(--mid);background:var(--paper);padding:0 12px;font-size:14px;opacity:.5}
-.overview h2,.day h3{font-family:"Songti SC","STSong",serif;color:#1e4d2b}
-.overview h2{font-size:30px;margin-bottom:12px;letter-spacing:2px}
-.overview .lead{color:#555;font-size:15px;margin-bottom:28px;line-height:1.9}
+.overview h2,.day h3{font-family:var(--serif);color:#1e4d2b}
+.overview h2{font-size:32px;margin-bottom:14px;letter-spacing:3px;line-height:1.4;font-weight:600}
+.overview .lead{color:#4a4a4a;font-size:15.5px;margin-bottom:30px;line-height:2;letter-spacing:.3px}
 .timeline{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}
 html{scroll-behavior:smooth}
 .card.day{scroll-margin-top:20px}
@@ -35,53 +39,53 @@ html{scroll-behavior:smooth}
 .tl-day.c2::before{background:var(--heavy)}
 .tl-day.c3::before{background:linear-gradient(90deg,var(--chill),var(--mid))}
 .tl-day:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(30,77,43,.12)}
-.tl-day .d{font-weight:700;color:#2d5f3f;font-size:15px;letter-spacing:1px;margin-top:4px}
+.tl-day .d{font-weight:700;color:#2d5f3f;font-size:16px;letter-spacing:1px;margin-top:4px;font-variant-numeric:tabular-nums}
 .tl-day .w{color:var(--gold);font-size:11px;margin-top:2px;letter-spacing:1px}
-.tl-day .t{color:#3d3d3d;margin-top:10px;font-size:12px;font-weight:600;line-height:1.4}
+.tl-day .t{color:#3d3d3d;margin-top:10px;font-size:12.5px;font-weight:600;line-height:1.55;letter-spacing:.3px}
 .day{position:relative;border-left:5px solid var(--mid);padding-left:44px;overflow:hidden}
 .day::before{content:"";position:absolute;left:-14px;top:44px;width:22px;height:22px;background:var(--mid);border-radius:50%;border:5px solid #fff;box-shadow:0 0 0 2px var(--mid),0 0 20px rgba(212,169,68,.4)}
 .day::after{content:"";position:absolute;right:-40px;top:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(212,169,68,.08),transparent 70%);pointer-events:none}
 .day-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px;flex-wrap:wrap;gap:12px;padding-bottom:18px;border-bottom:2px dashed rgba(212,169,68,.25)}
-.day-head .num{color:var(--mid);font-size:13px;font-weight:700;letter-spacing:4px;margin-bottom:6px;display:inline-block;padding:3px 12px;background:rgba(212,169,68,.12);border-radius:4px}
-.day-head h3{font-size:28px;letter-spacing:2px;margin-top:4px}
+.day-head .num{color:var(--mid);font-size:12px;font-weight:800;letter-spacing:5px;margin-bottom:8px;display:inline-block;padding:4px 14px;background:rgba(212,169,68,.15);border-radius:4px;font-family:var(--sans);text-indent:5px}
+.day-head h3{font-size:30px;letter-spacing:3px;margin-top:6px;line-height:1.4;font-weight:600}
 .day-head .date{color:#888;font-size:13px;margin-top:8px;letter-spacing:2px}
 .day-head .date::before{content:"▸ ";color:var(--mid)}
 .wx{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:linear-gradient(135deg,#eaf3f7 0%,#d5e5ee 60%,#e8f0e5 100%);border-radius:14px;padding:20px 24px;margin:20px 0 22px;border:1px solid #c3d9e5;position:relative;overflow:hidden;box-shadow:0 3px 12px rgba(90,114,128,.08)}
 .wx::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:linear-gradient(180deg,var(--chill),#5a7280)}
 .wx::after{content:"☁";position:absolute;right:14px;top:8px;font-size:52px;opacity:.1;color:#5a7280}
-.wx-t{font-family:"Songti SC",serif;color:var(--ink);font-size:32px;font-weight:700;line-height:1;letter-spacing:1px;white-space:nowrap;position:relative}
+.wx-t{font-family:var(--serif);color:var(--ink);font-size:34px;font-weight:700;line-height:1;letter-spacing:1px;white-space:nowrap;position:relative;font-variant-numeric:tabular-nums}
 .wx-t small{font-size:14px;color:#666;font-weight:400;letter-spacing:0}
-.wx-info{font-size:13.5px;color:#3d3d3d;line-height:1.75;position:relative}
+.wx-info{font-size:14px;color:#3d3d3d;line-height:1.85;position:relative;letter-spacing:.2px}
 .wx-info b{color:var(--gold)}
 .wx-info .cond{color:#5a7280;font-weight:600;letter-spacing:1.5px;margin-bottom:4px;font-size:12px;display:inline-block;padding:3px 10px;background:rgba(255,255,255,.5);border-radius:100px}
 .sec{margin:22px 0;position:relative}
-.sec-t{font-size:11px;color:#fff;font-weight:700;letter-spacing:4px;margin-bottom:14px;display:inline-block;padding:5px 14px;background:linear-gradient(90deg,var(--gold),#b48920);border-radius:3px;box-shadow:0 2px 6px rgba(139,105,20,.2)}
-.sec p,.sec li{color:#3d3d3d;font-size:15px}
+.sec-t{font-size:11.5px;color:#fff;font-weight:700;letter-spacing:5px;margin-bottom:16px;display:inline-block;padding:6px 16px;background:linear-gradient(90deg,var(--gold),#b48920);border-radius:3px;box-shadow:0 2px 6px rgba(139,105,20,.2);text-indent:5px}
+.sec p,.sec li{color:#3d3d3d;font-size:15.5px;letter-spacing:.2px}
 .sec ul{list-style:none;background:linear-gradient(90deg,rgba(212,169,68,.04),transparent);border-radius:8px;padding:8px 12px}
 .sec li{padding:6px 0 6px 24px;position:relative}
 .sec li::before{content:"◈";position:absolute;left:0;color:var(--mid);font-size:12px;top:9px}
 .sec li b{color:var(--ink);font-weight:600;background:linear-gradient(180deg,transparent 65%,rgba(212,169,68,.25) 65%);padding:0 2px}
 .itin{display:grid;grid-template-columns:80px 1fr;gap:0;position:relative;padding-left:4px;background:linear-gradient(90deg,rgba(30,77,43,.03),transparent);border-radius:8px;overflow:hidden}
 .itin::before{content:"";position:absolute;left:84px;top:12px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--mid),transparent);opacity:.4}
-.itin dt{color:var(--mid);font-weight:700;font-size:13px;letter-spacing:1px;padding:11px 12px 11px 8px;border-top:1px solid #f0e8d0;position:relative;text-align:right}
+.itin dt{color:var(--mid);font-weight:700;font-size:14px;letter-spacing:.5px;padding:12px 14px 12px 8px;border-top:1px solid #f0e8d0;position:relative;text-align:right;font-variant-numeric:tabular-nums}
 .itin dt::after{content:"●";position:absolute;right:-6px;top:50%;transform:translateY(-50%);color:var(--mid);font-size:10px;background:#fff;padding:0 2px;z-index:1}
-.itin dd{font-size:14.5px;color:#3d3d3d;line-height:1.7;padding:11px 4px 11px 20px;border-top:1px solid #f0e8d0}
+.itin dd{font-size:15px;color:#3d3d3d;line-height:1.8;padding:12px 4px 12px 22px;border-top:1px solid #f0e8d0;letter-spacing:.2px}
 .itin dd b{color:var(--ink);font-weight:600}
 .itin dt:first-of-type,.itin dd:first-of-type{border-top:none;padding-top:8px}
 .eats{background:linear-gradient(135deg,#fff5ec,#fce4d0);border-radius:12px;padding:16px 20px;margin:14px 0;border:1px dashed #d99a6c;position:relative}
 .eats::before{content:"🍜";position:absolute;top:-14px;left:16px;background:#fff;padding:2px 8px;border-radius:100px;font-size:15px;box-shadow:0 2px 6px rgba(217,154,108,.2)}
 .eats-t{color:#a04f1e;font-weight:700;font-size:12px;letter-spacing:2px;margin:2px 0 8px 34px;display:inline-block}
 .eats ul{list-style:none;padding:0;background:transparent}
-.eats li{color:#5c3a20;font-size:14px;padding:3px 0 3px 18px;position:relative}
+.eats li{color:#5c3a20;font-size:14.5px;padding:4px 0 4px 20px;position:relative;line-height:1.8;letter-spacing:.2px}
 .eats li::before{content:"◆";position:absolute;left:0;color:#d99a6c;font-size:10px;top:8px}
 .eats li b{color:#8b3a1e;background:linear-gradient(180deg,transparent 65%,rgba(217,154,108,.35) 65%);padding:0 2px}
-.metro{background:linear-gradient(135deg,#e8f1ec,#d0e0d5);border-radius:12px;padding:14px 20px;margin:14px 0;border-left:5px solid var(--chill);position:relative;font-size:14px;color:#2d4a37;line-height:1.85}
+.metro{background:linear-gradient(135deg,#e8f1ec,#d0e0d5);border-radius:12px;padding:16px 22px;margin:14px 0;border-left:5px solid var(--chill);position:relative;font-size:14.5px;color:#2d4a37;line-height:1.9;letter-spacing:.2px}
 .metro::before{content:"🚇";position:absolute;top:-12px;left:14px;background:#fff;padding:2px 8px;border-radius:100px;font-size:14px;box-shadow:0 2px 6px rgba(95,168,134,.2)}
 .metro b{color:var(--ink);font-weight:700}
 .metro .line1{color:#fff;background:#e6002d;padding:1px 8px;border-radius:100px;font-size:12px;font-weight:700;margin:0 2px;letter-spacing:0}
 .metro .line2{color:#fff;background:#0075c1;padding:1px 8px;border-radius:100px;font-size:12px;font-weight:700;margin:0 2px}
 .metro .line3{color:#fff;background:#f7a600;padding:1px 8px;border-radius:100px;font-size:12px;font-weight:700;margin:0 2px}
-.tip{background:linear-gradient(135deg,#fdf6e3,#faedc5);border-radius:10px;padding:16px 20px 16px 46px;margin-top:18px;font-size:14px;color:#6b5b23;border-left:4px solid var(--mid);line-height:1.75;position:relative;box-shadow:0 2px 8px rgba(212,169,68,.08)}
+.tip{background:linear-gradient(135deg,#fdf6e3,#faedc5);border-radius:10px;padding:18px 22px 18px 52px;margin-top:20px;font-size:14.5px;color:#6b5b23;border-left:4px solid var(--mid);line-height:1.85;position:relative;box-shadow:0 2px 8px rgba(212,169,68,.08);letter-spacing:.2px}
 .tip::before{content:"💡";position:absolute;left:16px;top:14px;font-size:18px;background:#fff;width:26px;height:26px;border-radius:50%;text-align:center;line-height:26px;box-shadow:0 2px 4px rgba(139,105,20,.15)}
 .footer-tips{background:linear-gradient(135deg,#1e4d2b 0%,#2d5f3f 100%);color:#faf7f0;border-radius:20px;padding:48px 44px;margin-top:12px;position:relative;overflow:hidden}
 .footer-tips::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,rgba(212,169,68,.2),transparent 40%);pointer-events:none}
@@ -515,7 +519,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
 
 <section class="card" id="booking">
-  <h2 style="font-family:'Songti SC',serif;color:#1e4d2b;font-size:28px;letter-spacing:2px;margin-bottom:10px">🎫 景点预约 · 一码游贵州</h2>
+  <h2 style="font-family:var(--serif);color:#1e4d2b;font-size:28px;letter-spacing:2px;margin-bottom:10px">🎫 景点预约 · 一码游贵州</h2>
   <p style="color:#555;font-size:14px;margin-bottom:20px">网页无法直接唤起微信小程序,以下为<b>微信内一键搜索指引</b>+ 各景区官方公众号,提前 3 天预约。</p>
 
   <div style="background:linear-gradient(135deg,#e8f0e5,#d0e0d5);border-radius:12px;padding:20px 24px;margin-bottom:20px;border-left:5px solid #2d5f3f">
@@ -543,7 +547,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 </section>
 
 <section class="card checklist">
-  <h2 style="font-family:'Songti SC',serif;color:#1e4d2b;font-size:28px;letter-spacing:2px;margin-bottom:16px">🎒 必备清单 · 7 日贵州</h2>
+  <h2 style="font-family:var(--serif);color:#1e4d2b;font-size:28px;letter-spacing:2px;margin-bottom:16px">🎒 必备清单 · 7 日贵州</h2>
   <p style="color:#555;font-size:14px;margin-bottom:20px">按目的地×季节×天气×环境定制。行前逐项打勾,漏一样可能行程崩盘。</p>
 
   <div class="sec"><div class="sec-t">— 证 件 & 电 子 —</div>
