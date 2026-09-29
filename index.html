@@ -155,6 +155,33 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .navmode button{padding:8px 16px;border-radius:100px;border:1.5px solid #d9c9a8;background:#fff;color:#7a6a4a;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;letter-spacing:1px}
 .navmode button.on{background:var(--mid);border-color:var(--mid);color:#fff;box-shadow:0 3px 10px rgba(212,169,68,.35)}
 .navmode .hint{font-size:12px;color:#999;flex-basis:100%;margin-top:2px;line-height:1.6}
+.sidenav-btn{position:fixed;top:16px;left:16px;z-index:1001;width:46px;height:46px;border-radius:12px;border:none;background:rgba(30,77,43,.92);color:#f5deac;font-size:20px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);transition:transform .15s}
+.sidenav-btn:hover{transform:scale(1.06)}
+.sidenav-ovl{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:1000;opacity:0;pointer-events:none;transition:opacity .25s}
+.sidenav-ovl.show{opacity:1;pointer-events:auto}
+.sidenav{position:fixed;top:0;left:0;bottom:0;width:280px;max-width:82vw;z-index:1002;background:linear-gradient(160deg,#1e4d2b,#2d5f3f);color:#e8dfc7;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);box-shadow:4px 0 24px rgba(0,0,0,.3);display:flex;flex-direction:column;overflow:hidden}
+.sidenav.show{transform:translateX(0)}
+.sidenav-h{padding:22px 20px 16px;font-family:var(--serif);font-size:19px;font-weight:700;letter-spacing:2px;color:#f5deac;border-bottom:1px solid rgba(245,222,172,.15);flex-shrink:0}
+.sidenav-h span{display:block;font-size:11px;color:#a8b8a8;font-weight:400;letter-spacing:1px;margin-top:4px}
+.sidenav-list{flex:1;overflow-y:auto;padding:8px 0 30px}
+.sidenav-list::-webkit-scrollbar{width:5px}
+.sidenav-list::-webkit-scrollbar-thumb{background:rgba(245,222,172,.25);border-radius:3px}
+.sn-top{display:block;padding:11px 20px;color:#d5cba6;text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;border-bottom:1px solid rgba(245,222,172,.08)}
+.sn-top:hover{background:rgba(245,222,172,.08);color:#f5deac}
+.sn-grp{border-bottom:1px solid rgba(245,222,172,.08)}
+.sn-day{display:flex;align-items:center;justify-content:space-between}
+.sn-day-t{flex:1;padding:12px 8px 12px 20px;color:#e8dfc7;text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:.5px;line-height:1.4}
+.sn-day-t i{display:block;font-style:normal;font-size:10px;color:#d4a944;letter-spacing:2px;font-weight:800;margin-bottom:2px}
+.sn-day-t:hover{color:#f5deac}
+.sn-arw{padding:12px 18px;color:#d4a944;font-size:13px;cursor:pointer;transition:transform .2s;user-select:none;flex-shrink:0}
+.sn-grp.open .sn-arw{transform:rotate(90deg)}
+.sn-sub{max-height:0;overflow:hidden;transition:max-height .3s ease;background:rgba(0,0,0,.15)}
+.sn-grp.open .sn-sub{max-height:700px}
+.sn-sub a{display:block;padding:9px 20px 9px 32px;color:#b8c9b8;text-decoration:none;font-size:13px;letter-spacing:.3px;border-top:1px solid rgba(245,222,172,.05)}
+.sn-sub a:hover{background:rgba(245,222,172,.1);color:#f5deac}
+.sn-sub a::before{content:"·";margin-right:8px;color:#d4a944}
+.sec-t{scroll-margin-top:16px}
+.card.overview{scroll-margin-top:16px}
 .rbtn.car{background:#fff5ec;color:#c86e4a;border-color:#e5b090}
 .rbtn.car:hover{background:#c86e4a;color:#fff}
 .rbtn.bus{background:#e8f1ec;color:#2d5f3f;border-color:#8fb59e}
@@ -245,6 +272,12 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 </style>
 </head>
 <body>
+<button class="sidenav-btn" id="snBtn" type="button" aria-label="打开导航">☰</button>
+<div class="sidenav-ovl" id="snOvl"></div>
+<nav class="sidenav" id="snNav">
+  <div class="sidenav-h">黔行 · 七日<span>点标题跳转 · 点箭头展开小节</span></div>
+  <div class="sidenav-list" id="snList"></div>
+</nav>
 <div class="hero">
   <h1>黔行 · 七日</h1>
   <div class="sub">A SEVEN-DAY SOJOURN IN GUIZHOU</div>
@@ -964,6 +997,47 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
       });
       window.location.href=scheme;
     });
+  });
+})();
+</script>
+<script>
+(function(){
+  var list=document.getElementById('snList');
+  if(!list)return;
+  var html='';
+  // 概览入口
+  var ov=document.querySelector('.card.overview');
+  if(ov){ if(!ov.id)ov.id='overview'; html+='<a class="sn-top" href="#overview">📋 行程总览</a>'; }
+  // 每天一组:标题可点跳转,箭头折叠子节
+  document.querySelectorAll('section.card.day').forEach(function(day){
+    var id=day.id; if(!id)return;
+    var numEl=day.querySelector('.day-head .num'), h3El=day.querySelector('.day-head h3');
+    var num=(numEl?numEl.textContent:'').replace(/\s+/g,' ').trim();
+    var h3=(h3El?h3El.textContent:id).replace(/\s+/g,'').trim();
+    var sub='';
+    day.querySelectorAll('.sec-t').forEach(function(st,i){
+      var sid=id+'-s'+i; st.id=sid;
+      var t=st.textContent.replace(/[—–]/g,'').replace(/\s+/g,'').trim();
+      if(t)sub+='<a href="#'+sid+'">'+t+'</a>';
+    });
+    html+='<div class="sn-grp" data-day="'+id+'"><div class="sn-day">'
+      +'<a class="sn-day-t" href="#'+id+'"><i>'+num+'</i>'+h3+'</a>'
+      +(sub?'<span class="sn-arw" role="button" aria-label="展开">▶</span>':'')
+      +'</div><div class="sn-sub">'+sub+'</div></div>';
+  });
+  list.innerHTML=html;
+
+  var nav=document.getElementById('snNav'),ovl=document.getElementById('snOvl'),btn=document.getElementById('snBtn');
+  function open(){nav.classList.add('show');ovl.classList.add('show');}
+  function close(){nav.classList.remove('show');ovl.classList.remove('show');}
+  btn.addEventListener('click',open);
+  ovl.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  // 委托:点箭头折叠/展开;点任意链接跳转后关抽屉(原生 hash 滚动)
+  list.addEventListener('click',function(e){
+    var arw=e.target.closest('.sn-arw');
+    if(arw){ e.preventDefault(); arw.closest('.sn-grp').classList.toggle('open'); return; }
+    if(e.target.closest('a')) close();
   });
 })();
 </script>
