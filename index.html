@@ -13,8 +13,9 @@
 <meta name="twitter:title" content="黔行·七日 · 贵州国庆攻略">
 <meta name="twitter:description" content="10.3-10.9 七日贵州 · 全路线 + 美食 + 打包清单">
 <meta name="twitter:image" content="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200">
-<meta name="description" content="贵州国庆七日游攻略 · 贵阳观山湖大本营 · 五景一寨 · 每日路线 + 美食 + 天气 + 打包清单">
+<meta name="description" content="贵州国庆七日游攻略 · 贵阳观山湖大本营 · 天河潭织金洞小七孔黄果树凯里五景 · 每日路线 + 美食 + 天气 + 打包清单">
 <meta name="keywords" content="贵州,国庆,荔波小七孔,黄果树,织金洞,天河潭,凯里,旅游攻略">
+<meta name="robots" content="noindex,nofollow">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -149,6 +150,11 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .rbtn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 14px;border-radius:100px;font-size:13px;font-weight:600;text-decoration:none;transition:all .15s;border:1.5px solid;letter-spacing:1px;text-align:center;white-space:nowrap;min-height:40px}
 @media(max-width:520px){.rbtns{grid-template-columns:1fr}}
 .rbtn:hover{transform:translateY(-1px);box-shadow:0 4px 10px rgba(0,0,0,.08)}
+.navmode{display:flex;gap:8px;margin:14px 0 2px;flex-wrap:wrap;align-items:center}
+.navmode .lbl{font-size:13px;color:#5c3a20;font-weight:700;letter-spacing:1px}
+.navmode button{padding:8px 16px;border-radius:100px;border:1.5px solid #d9c9a8;background:#fff;color:#7a6a4a;font-size:13px;font-weight:600;cursor:pointer;transition:all .15s;font-family:inherit;letter-spacing:1px}
+.navmode button.on{background:var(--mid);border-color:var(--mid);color:#fff;box-shadow:0 3px 10px rgba(212,169,68,.35)}
+.navmode .hint{font-size:12px;color:#999;flex-basis:100%;margin-top:2px;line-height:1.6}
 .rbtn.car{background:#fff5ec;color:#c86e4a;border-color:#e5b090}
 .rbtn.car:hover{background:#c86e4a;color:#fff}
 .rbtn.bus{background:#e8f1ec;color:#2d5f3f;border-color:#8fb59e}
@@ -246,7 +252,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="meta">
     <span>📅 10.03 – 10.09</span>
     <span>🏨 观山湖 · 林城西路</span>
-    <span>🏔 五景一寨</span>
+    <span>🏔 五景</span>
   </div>
   <div class="mountains"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#faf7f0" d="M0,100 L0,60 L100,40 L200,55 L300,25 L400,50 L500,20 L600,45 L700,15 L800,40 L900,30 L1000,55 L1100,35 L1200,50 L1200,100 Z"/></svg></div>
 </div>
@@ -260,7 +266,13 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 <section class="card overview">
   <h2>行程概览</h2>
   <div style="background:linear-gradient(135deg,#fff5ec,#fce4d0);border-radius:10px;padding:12px 18px;margin-bottom:16px;font-size:14px;color:#5c3a20;border-left:4px solid #c86e4a"><b>🏨 酒店</b> · 汉庭酒店(贵阳市政府林城西路地铁站店) · <a href="https://uri.amap.com/marker?position=106.6238,26.6103&name=%E6%B1%89%E5%BA%AD%E9%85%92%E5%BA%97%28%E8%B4%B5%E9%98%B3%E5%B8%82%E6%94%BF%E5%BA%9C%E6%9E%97%E5%9F%8E%E8%A5%BF%E8%B7%AF%E5%9C%B0%E9%93%81%E7%AB%99%E5%BA%97%29&callnative=1" target="_blank" rel="noopener" style="color:#c86e4a;font-weight:600">📍 高德地图</a></div>
-  <p class="lead">住宿固定在观山湖林城西路,每晚回酒店。用户指定 10.6 荔波、10.8 黄果树,中间 10.7 安排休闲日缓冲。累的重头戏之间必插一日轻度,保证不掉血。全程高铁往返 + 景区直通车,不折腾。</p>
+  <div class="navmode">
+    <span class="lbl">🧭 导航起点</span>
+    <button id="nmHotel" class="on" type="button">🏨 从酒店出发</button>
+    <button id="nmHere" type="button">📍 从当前位置</button>
+    <span class="hint">选「当前位置」后,点各天导航按钮会用<b>高德实时定位</b>当起点(人在哪算哪,住哪都对)。需在<b>高德 App 内</b>打开并授权定位;浏览器网页版仍以酒店为起点。选择会记住。</span>
+  </div>
+  <p class="lead">住宿固定在观山湖林城西路,每晚回酒店。用户指定 10.6 荔波、10.8 黄果树,中间 10.7 安排休闲日缓冲。全程高铁往返 + 景区直通车,不折腾。</p>
   <div class="timeline">
     <a href="#day1" class="tl-day c1"><div class="d">10.03</div><div class="w">FRI</div><div class="t">京→贵阳<br>抵 达</div></a>
     <a href="#day2" class="tl-day c1"><div class="d">10.04</div><div class="w">SAT</div><div class="t">天河潭<br>半 日</div></a>
@@ -360,7 +372,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
       <li><b>太平路 / 富水北路</b> · 云岩区喷水池周边 · 老牌夜宵巷,若青云市集人爆炸备选</li>
     </ul>
   </div>
-  <div class="tip">天河潭半日足够,是"贵州山水浓缩",强度极低,当作热身。下午 2h 午睡不省,后面 5 天硬仗打不下。甲秀楼夜景 + 青云市集串成夜游线,是贵阳城市味道的合集。</div>
+  <div class="tip">天河潭半日足够,是"贵州山水浓缩",强度极低,当作热身。甲秀楼夜景 + 青云市集串成夜游线,是贵阳城市味道的合集。</div>
 </section>
 
 <section class="card day" id="day3">
@@ -370,7 +382,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div class="route-map"><div class="route-map-t">🗺 当 日 路 线</div><div class="route-map-chain"><span class="node start">酒店</span><span class="arr">→</span><span class="node">贵阳北</span><span class="arr">→</span><span class="node">织金洞</span><span class="arr">→</span><span class="node">贵阳北</span><span class="arr">→</span><span class="node end">酒店</span></div></div>
   <div class="wx">
     <div class="wx-t"><a href="https://m.weather.com.cn/mweather/101260112.shtml" target="_blank" rel="noopener" title="点看天气详情">20°<small>/</small>13°<small>C</small></a></div>
-    <div class="wx-info"><div class="cond">多云偶阴 · 洞内恒温 15°C 湿度高</div><br><b>穿搭:</b> 长袖 T + <b>摇粒绒/防风外套</b>(洞内必穿),长裤,<b>防滑运动鞋</b>。洞里凉且滑,别穿凉鞋。</div>
+    <div class="wx-info"><div class="cond">多云偶阴 · 洞内恒温 15°C 湿度高</div><br><b>穿搭:</b> 长袖 T + <b>摇粒绒/防风外套</b>(刚进洞冷、爬台阶热,带薄外套),<b>防滑运动鞋/洞洞鞋</b>。<b>全程湿滑</b>常有人滑倒,别穿凉鞋 · <b>别穿拖地长裤</b>(裤腿全是泥)。</div>
   </div>
   <div class="metro"><b>去程</b> 酒店 → <span class="line1">1号线</span> 观山湖公园 → 贵阳北站 · 15min · 或打车 25 元。<br><b>织金站 → 洞口</b> 站前<b>景区直通车</b>专柜,40min · 30 元/单程,不用打黑车。<br><b>返程</b> 织金 → 贵阳北 → <span class="line1">1号线</span>回酒店。<br><b>班次/票</b> <b>贵阳北 → 织金站</b> 高铁 1h,推荐早班 <b>C6021 · 08:19</b><br><b>班次/票</b> 返程末班高铁 <b>18:30 左右</b>,提前锁票</div>
   <div class="rbtn-lbl">— 高 德 一 键 路 线 · 贵阳北站 —</div>
@@ -380,17 +392,24 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 <a class="rbtn bus" href="https://uri.amap.com/navigation?from=106.6238,26.6103,%E6%B1%89%E5%BA%AD%E9%85%92%E5%BA%97%28%E8%B4%B5%E9%98%B3%E5%B8%82%E6%94%BF%E5%BA%9C%E6%9E%97%E5%9F%8E%E8%A5%BF%E8%B7%AF%E5%9C%B0%E9%93%81%E7%AB%99%E5%BA%97%29&to=106.6293,26.6467,%E8%B4%B5%E9%98%B3%E5%8C%97%E7%AB%99&src=web&coordinate=gaode&callnative=1&mode=walk" target="_blank" rel="noopener">🚶 步行</a>
 </div>
   
+  <div class="sec"><div class="sec-t">— 省 腿 顺 序 · 反 穿 大 峡 谷 —</div>
+    <ul><li><b>先玩大峡谷、再玩织金洞</b>。到 2 号停车场沿坡上走,见指示牌<b>左转</b>坐摆渡车到<b>大峡谷「出口」</b>进(❌别右转,右转是织金洞)</li>
+    <li>上摆渡车<b>跟司机说清到「出口」</b>。从出口进＝电梯下、一路下台阶<b>反穿</b>,几乎不爬坡;从入口进则下船后要爬一长段台阶,崩溃</li>
+    <li>反穿到燕子洞乘船(反穿乘船处在洞里,不晒、人少),回织金洞摆渡点午饭,再进织金洞</li>
+    <li><b>织金洞后 1/3 段多上台阶</b>,是全天体力核心 · 门票免、但<b>电梯+观光车强制买</b></li></ul>
+  </div>
   <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
     <dl class="itin">
       <dt>06:45</dt><dd>起床,便利店买早餐 · 打车贵阳北站(15min)</dd>
-      <dt>08:20</dt><dd>高铁发车</dd>
-      <dt>09:30</dt><dd>抵织金站,直通车前往景区</dd>
-      <dt>10:15</dt><dd>抵洞口,乘<b>电瓶车摆渡</b>(必坐,省一半体力)</dd>
-      <dt>10:30</dt><dd>入洞,全程 6.6km,分 <b>10 大景区 47 个厅堂</b></dd>
+      <dt>08:20</dt><dd>高铁发车 · 直通车订「<b>好行网</b>」小程序,越早班越好</dd>
+      <dt>09:30</dt><dd>抵织金站(9 点多到人还少),直通车前往景区</dd>
+      <dt>10:00</dt><dd>2 号停车场左转,摆渡车到<b>大峡谷出口</b>,电梯下开始反穿</dd>
+      <dt>11:00</dt><dd>燕子洞<b>乘船</b>(反穿在洞里等船,人少)</dd>
+      <dt>11:35</dt><dd>回织金洞摆渡点,农家菜午餐 + 休整</dd>
+      <dt>12:30</dt><dd>入织金洞,全程 6.6km,<b>10 大景区 47 个厅堂</b> · 前段多下坡、后 1/3 上台阶</dd>
       <dt></dt><dd>重点看:<b>霸王盔 · 银雨树 · 卷曲石 · 塔松王国</b></dd>
-      <dt>13:00</dt><dd>出洞,景区外农家菜午餐</dd>
-      <dt>14:30</dt><dd>直通车返织金站</dd>
-      <dt>16:00</dt><dd>返程高铁</dd>
+      <dt>14:20</dt><dd>出洞,摆渡返织金站</dd>
+      <dt>15:40</dt><dd>返程高铁(下午 2-5 点流动发车,满员即走)</dd>
       <dt>17:00</dt><dd>抵贵阳北,回观山湖</dd>
       <dt>19:00</dt><dd>晚餐 · 见下方吃货块</dd>
     </dl>
@@ -486,7 +505,8 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
       <dt>10:30</dt><dd><b>大十字 / 苗侗风情园</b> 步行逛街,看银饰店 + 蜡染工坊,可买伴手礼</dd>
       <dt>12:00</dt><dd><b>午餐 · 酸汤鱼 or 酸汤牛肉</b>(重头戏,坐下慢吃 1.5h)</dd>
       <dt>14:00</dt><dd><b>凯里民族博物馆</b> · 免费 · 苗侗银饰蜡染文物 · 消食 1h</dd>
-      <dt>15:00</dt><dd><b>下司古镇</b>(可选加码) · 距凯里 30min 车程 · 有"小上海"之称,清水江边石板古街,不去也无遗憾</dd>
+      <dt>15:00</dt><dd><b>下司古镇</b>(可选加码) · 距凯里 30min 车程 · "小上海"之称,清水江边石板古街,逛<b>绣里淘</b>非遗集市</dd>
+      <dt></dt><dd>文青可选:<b>《地球最后的夜晚》山洞 + 废弃火车轨道</b>(穿桥洞就能看到)、<b>《路边野餐》瀑布</b> · 毕赣电影取景地</dd>
       <dt></dt><dd>或者:市区<b>金泉湖公园</b>散步 · 咖啡馆坐一坐</dd>
       <dt>16:30</dt><dd>打车凯里南站,买伴手礼<b>雷公山银球茶 + 折耳根辣椒</b></dd>
       <dt>17:30</dt><dd>凯里南 → 贵阳北,高铁 40min</dd>
@@ -511,7 +531,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
       <li><b>贵阳返程晚餐</b> · <b>亮欢寨</b>观山湖分店(酸汤鱼) · 或酒店周边<b>新大新豆米火锅</b></li>
     </ul>
   </div>
-  <div class="tip">凯里粉店多用<b>老地名</b>(棉纺厂/九小/州车队),导航直接搜店名。国庆错峰吃早市,10:00 前进店不排队。酸汤鱼是<b>黔东南苗族国宴级</b>,凯里市区正宗且便宜。加码下司古镇看兴趣,不加码<b>下午 3 点就可以打道回府</b>更轻松。</div>
+  <div class="tip">凯里人吃粉<b>认早不认晚</b>,好粉店常上午卖完。国庆想不排队,赶在 <b>10:00 前</b>的早市最稳,上面店名直接导航能搜到。酸汤鱼是<b>黔东南苗族国宴级</b>,凯里市区正宗且便宜。加码下司古镇看兴趣,不加码<b>下午 3 点就可以打道回府</b>更轻松。</div>
 </section>
 
 <section class="card day" id="day6">
@@ -531,22 +551,25 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 <a class="rbtn bus" href="https://uri.amap.com/navigation?from=106.6238,26.6103,%E6%B1%89%E5%BA%AD%E9%85%92%E5%BA%97%28%E8%B4%B5%E9%98%B3%E5%B8%82%E6%94%BF%E5%BA%9C%E6%9E%97%E5%9F%8E%E8%A5%BF%E8%B7%AF%E5%9C%B0%E9%93%81%E7%AB%99%E5%BA%97%29&to=106.6293,26.6467,%E8%B4%B5%E9%98%B3%E5%8C%97%E7%AB%99&src=web&coordinate=gaode&callnative=1&mode=walk" target="_blank" rel="noopener">🚶 步行</a>
 </div>
   
-  <div class="sec"><div class="sec-t">— 三 景 区 顺 序 —</div>
-    <ul><li><b>陡坡塘</b>(1h) 《西游记》片尾曲取景地 · 宽度 105m 大瀑布 · 先热身</li>
-    <li><b>天星桥</b>(2.5h) 水上石林 · <b>数生步</b>踩生日日期石 · 银链坠潭瀑</li>
-    <li><b>大瀑布</b>(2h)压轴 · <b>水帘洞</b>穿瀑而过 · 犀牛潭看正面</li></ul>
+  <div class="sec"><div class="sec-t">— 清 晨 抢 机 位 顺 序 (实 测 不 排 队) —</div>
+    <ul><li><b>①霞客亭·上帝视角</b>(0.5-1h,重中之重放最早) 大巴到<b>陡坡塘站</b>下车,过马路走木栈道 10-15min · <b>全景区唯一能拍到整条瀑布的高空机位</b> · 地面<b>绿脚印👣</b>就是机位,有 3-4 个往前走自己找</li>
+    <li><b>②天星桥</b>(2.5-3h,全天体力核心,趁上午精力最好) <b>90% 精华在下半段</b>,听广播反方向走 · 数生步→水上石林→<b>银链坠潭</b>(黄果树颜值天花板)</li>
+    <li><b>③大瀑布+水帘洞</b>(2-2.5h,下午光线出彩虹) 买<b>往返扶梯票</b>先下后上,少走上千级台阶 · 犀牛潭仰观 · 穿雨衣进水帘洞</li>
+    <li><b>④陡坡塘</b>(0.5h,平路收尾不累) 《西游记》师徒过河取景地,宽而平缓</li></ul>
   </div>
   <div class="sec"><div class="sec-t">— 一 日 时 刻 —</div>
     <dl class="itin">
       <dt>06:30</dt><dd>起床,打车贵阳北站</dd>
       <dt>07:24</dt><dd>高铁发车</dd>
       <dt>08:00</dt><dd>抵安顺西,直通车赴景区</dd>
-      <dt>09:00</dt><dd>抵游客中心,先坐大巴去<b>陡坡塘</b></dd>
-      <dt>10:30</dt><dd>大巴 → <b>天星桥</b> · 数生步慢慢踩 · 天星洞 · 银链坠潭</dd>
-      <dt>13:00</dt><dd>景区餐厅简餐(黄果树园区内,不出景区,省时间)</dd>
-      <dt>14:00</dt><dd>大巴 → <b>大瀑布</b>景区,先走观景台看全景</dd>
+      <dt>08:30</dt><dd>入园(<b>争取 8:30 前</b>,清晨人最少) · 大巴到陡坡塘站</dd>
+      <dt>08:50</dt><dd>过马路走<b>霞客亭·上帝视角</b>,趁没人拍全景大片 ⭐️</dd>
+      <dt>09:40</dt><dd>原路返陡坡塘乘车点,大巴 → <b>天星桥</b></dd>
+      <dt>10:00</dt><dd><b>天星桥</b>反走下半段 · 数生步 · 水上石林 · 银链坠潭</dd>
+      <dt>13:00</dt><dd>出天星桥,乘车点回<b>大瀑布</b>景区 · 园内简餐</dd>
+      <dt>14:00</dt><dd><b>大瀑布</b>往返扶梯 · 观景台看全景 · 犀牛潭正面</dd>
       <dt>15:00</dt><dd><b>水帘洞</b>穿瀑 · 湿身必备雨衣 · 六个洞窗看瀑布内侧</dd>
-      <dt>16:30</dt><dd>犀牛潭 + 猴凳岩再看一遍瀑布正面</dd>
+      <dt>16:30</dt><dd>大巴 → <b>陡坡塘</b>平路收尾 · 拍西游记取景地</dd>
       <dt>17:30</dt><dd>大巴出景区,直通车返安顺西</dd>
       <dt>19:00</dt><dd>安顺西上高铁</dd>
       <dt>19:35</dt><dd>抵贵阳北,回酒店</dd>
@@ -562,7 +585,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
       <li>累崩 · 便利店<b>丝恋丝娃娃外卖 / 罗记牛肉粉外卖</b></li>
     </ul>
   </div>
-  <div class="tip">黄果树三景区大巴强制乘坐,不可自驾进景区。<b>水帘洞</b>是灵魂,再累也要走。国庆水量国内最大级,雨衣不是"以防万一",是"一定会用到"。走路多,穿最舒服的鞋。</div>
+  <div class="tip">⚠️ <b>水帘洞必须提前 14 天在「安旅通」小程序单独约名额</b>,不约进不去,是全程灵魂别错过。<br>三景区大巴强制乘坐、不可自驾;<b>观光车不限次反复坐</b>。霞客亭木栈道<b>时有临时封闭</b>,封了要绕远,现场看指示牌走全景台。老人小孩<b>别去天星桥</b>(全程无回头路太累)。国庆水量国内最大级,雨衣一定用得上;全程约 2.5 万步,穿最舒服的防滑鞋。</div>
 </section>
 
 <section class="card day" id="day7">
@@ -615,7 +638,6 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
 <section class="card" id="booking">
   <h2 style="font-family:var(--serif);color:#1e4d2b;font-size:28px;letter-spacing:2px;margin-bottom:10px">🎫 景点预约 · 一码游贵州</h2>
-  <p style="color:#555;font-size:14px;margin-bottom:20px">网页无法直接唤起微信小程序,以下为<b>微信内一键搜索指引</b>+ 各景区官方公众号,提前 3 天预约。</p>
 
   <div style="background:linear-gradient(135deg,#e8f0e5,#d0e0d5);border-radius:12px;padding:20px 24px;margin-bottom:20px;border-left:5px solid #2d5f3f">
     <div style="color:#8b6914;font-weight:700;font-size:12px;letter-spacing:2px;margin-bottom:10px">🎯 一 码 游 贵 州 小 程 序 · 3 步 走</div>
@@ -638,7 +660,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
     </ul>
   </div>
 
-  <div class="tip">⚠️ <b>国庆预约铁律</b> · 提前 <b>3 天</b>开抢,黄果树/小七孔常在<b>放票日</b>(通常 T-3 早 8:00 或 9:00)秒光;实名预约,一证一票,信息务必填对(改不了)。<b>票价以官方公众号当日查为准</b>,以上仅参考。</div>
+  <div class="tip">⚠️ <b>国庆预约铁律</b> · 门票提前 <b>3 天</b>开抢,黄果树/小七孔常在<b>放票日</b>(通常 T-3 早 8:00 或 9:00)秒光;实名预约,一证一票,信息务必填对(改不了)。<br>🌊 <b>黄果树水帘洞另需在「安旅通」小程序提前 14 天单独约名额</b>,与门票分开,别漏!织金洞直通车订「<b>好行网</b>」小程序。<b>票价以官方公众号当日查为准</b>,以上仅参考。</div>
 </section>
 
 <section class="card checklist">
@@ -885,10 +907,18 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
 <script>
 (function(){
+  // 导航起点模式:hotel=从酒店出发(默认,坐标写死);here=从当前位置(省略起点,高德用实时 GPS)
+  var KEY='gz7_navmode', mode=localStorage.getItem(KEY)||'hotel';
+  var bH=document.getElementById('nmHotel'), bE=document.getElementById('nmHere');
+  function paint(){ if(bH)bH.classList.toggle('on',mode==='hotel'); if(bE)bE.classList.toggle('on',mode==='here'); }
+  function set(m){ mode=m; try{localStorage.setItem(KEY,m)}catch(e){} paint(); }
+  if(bH)bH.addEventListener('click',function(){set('hotel')});
+  if(bE)bE.addEventListener('click',function(){set('here')});
+  paint();
+
   // 手机端:高德 uri.amap.com 中间页会丢参数,落到 App 首页。
   // 拦截 rbtn 点击,拼原生 scheme(带坐标直接进 App 路线规划),1.2s 未唤起则回退网页版。
   var isMobile=/android|iphone|ipad|ipod|harmony/i.test(navigator.userAgent);
-  if(!isMobile)return;
   var TMAP={car:0,bus:1,walk:2};
   function parse(href){
     var q={};
@@ -900,18 +930,29 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   }
   // from/to 格式: lon,lat,name(name 已 encode)
   function pt(s){var a=(s||'').split(',');return{lon:a[0],lat:a[1],name:a[2]||''}}
+  // 「当前位置」模式:重建 web url,去掉 from(高德网页版用浏览器定位/提示)
+  function stripFrom(href){
+    var base=href.split('?')[0],q=parse(href); delete q.from;
+    var s=Object.keys(q).map(function(k){return k+'='+q[k]}).join('&');
+    return base+(s?'?'+s:'');
+  }
   document.querySelectorAll('a.rbtn').forEach(function(a){
-    var q=parse(a.getAttribute('href'));
+    var orig=a.getAttribute('href'),q=parse(orig);
     if(!q.from||!q.to)return;
     var f=pt(q.from),t=pt(q.to);
-    var mode=(a.href.match(/mode=(\w+)/)||[])[1]||'car';
-    var scheme='amap://route/plan?sourceApplication=guizhou7&dev=0'
-      +'&slat='+f.lat+'&slon='+f.lon+'&sname='+f.name
-      +'&dlat='+t.lat+'&dlon='+t.lon+'&dname='+t.name
-      +'&t='+(TMAP[mode]!=null?TMAP[mode]:0);
-    var web=a.href;
+    var m=(orig.match(/mode=(\w+)/)||[])[1]||'car';
     a.addEventListener('click',function(e){
+      var here=(mode==='here');
+      var web=here?stripFrom(orig):orig;
+      if(!isMobile){ // 桌面:酒店模式走原生链接不动;当前位置模式换成去 from 的 url
+        if(here){e.preventDefault();window.open(web,a.target||'_blank');}
+        return;
+      }
       e.preventDefault();
+      var scheme='amap://route/plan?sourceApplication=guizhou7&dev=0'
+        +(here?'':('&slat='+f.lat+'&slon='+f.lon+'&sname='+f.name))
+        +'&dlat='+t.lat+'&dlon='+t.lon+'&dname='+t.name
+        +'&t='+(TMAP[m]!=null?TMAP[m]:0);
       var t0=Date.now();
       // 未装 App:唤起失败,页面仍在前台 → 回退网页版
       var timer=setTimeout(function(){
