@@ -120,6 +120,13 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .checklist li.pk span b{color:var(--ink);font-weight:600;background:linear-gradient(180deg,transparent 65%,rgba(212,169,68,.25) 65%);padding:0 2px;transition:all .15s}
 .checklist-reset{display:inline-block;margin-top:16px;padding:6px 14px;background:#f0e8d0;color:#8b6914;border-radius:6px;border:1px solid #d5cba6;cursor:pointer;font-size:13px;font-family:inherit}
 .checklist-reset:hover{background:var(--mid);color:#fff}
+
+.amap-link{color:inherit;text-decoration:none;border-bottom:1.5px dotted var(--river,#4a7ba6);cursor:pointer;transition:all .15s;padding:0 1px}
+.amap-link:hover{color:#c86e4a;border-bottom-color:#c86e4a;border-bottom-style:solid}
+.amap-link::after{content:"📍";font-size:.7em;margin-left:1px;opacity:.55;vertical-align:super}
+.amap-banner{background:linear-gradient(135deg,#eaf1ee,#d5e2dc);border:1px dashed #7ba896;border-radius:10px;padding:12px 18px;margin:14px 0 20px;font-size:13.5px;color:#2d4a37;text-align:center}
+.amap-banner::before{content:"🗺 ";margin-right:2px}
+.amap-banner b{color:#c86e4a}
 </style>
 </head>
 <body>
@@ -149,6 +156,9 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
     <a href="#day7" class="tl-day c1"><div class="d">10.09</div><div class="w">THU</div><div class="t">黔灵公园<br>返 京</div></a>
   </div>
 </section>
+
+<div class="container-inner"></div>
+<div style="max-width:1080px;margin:0 auto;padding:0 24px"><div class="amap-banner">📍 <b>虚线下划线</b>的景点/餐厅/车站可点击 · 一键跳转<b>高德地图</b>导航</div></div>
 
 <section class="card day" id="day1">
   <div class="day-head">
@@ -562,6 +572,55 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
     saved={};
     try{localStorage.removeItem(KEY)}catch(e){}
   });
+})();
+</script>
+
+<script>
+(function(){
+  var places={
+    '天河潭':'贵阳','银河飞瀑':'贵阳','天生桥':'贵阳',
+    '织金洞':'织金','织金站':'织金',
+    '荔波小七孔':'荔波','小七孔':'荔波','拉雅瀑布':'荔波','水上森林':'荔波','卧龙潭':'荔波','鸳鸯湖':'荔波','荔波站':'荔波',
+    '黄果树':'安顺','陡坡塘':'安顺','天星桥':'安顺','水帘洞':'安顺','犀牛潭':'安顺','安顺西站':'安顺','安顺西':'安顺',
+    '甲秀楼':'贵阳','文昌阁':'贵阳','花溪公园':'贵阳','青岩古镇':'贵阳',
+    '黔灵山公园':'贵阳','黔灵公园':'贵阳','弘福寺':'贵阳','观山湖公园':'贵阳',
+    '贵阳北站':'贵阳','贵阳北':'贵阳','龙洞堡机场':'贵阳','龙洞堡':'贵阳',
+    '凯里南站':'凯里','凯里南':'凯里','凯里民族博物馆':'凯里','苗侗风情园':'凯里','下司古镇':'凯里',
+    '万象汇':'贵阳','悦然广场':'贵阳','青云市集':'贵阳','青云路':'贵阳','黔灵菜市场':'贵阳',
+    '亮欢寨':'贵阳','老凯里酸汤鱼':'贵阳','苗姑娘':'贵阳','新大新豆米火锅':'贵阳','土风豆米火锅':'贵阳','罗记牛肉粉':'贵阳','丝恋丝娃娃':'贵阳','黔知味':'贵阳',
+    '火车站鹅肉粉':'凯里','州车队双烧粉':'凯里','棉纺厂桥头牛肉粉':'凯里','九小门口鸭子粉':'凯里','张老鬼猪脚粉':'凯里','贵都名门糟辣粉':'凯里','苗岭牛肉':'凯里','下司酸汤':'凯里',
+    '王万妈':'贵阳','谭记三姨妈':'贵阳','状元阁':'贵阳',
+    '林城西路':'贵阳','花果园':'贵阳','花溪':'贵阳'
+  };
+  var keys=Object.keys(places).sort(function(a,b){return b.length-a.length});
+  function esc(x){return x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}
+  var re=new RegExp('('+keys.map(esc).join('|')+')','g');
+  function walk(n){
+    if(n.nodeType===3){
+      var t=n.nodeValue;
+      re.lastIndex=0;
+      if(!re.test(t))return;
+      re.lastIndex=0;
+      var frag=document.createDocumentFragment(),last=0,m;
+      while((m=re.exec(t))){
+        if(m.index>last)frag.appendChild(document.createTextNode(t.slice(last,m.index)));
+        var a=document.createElement('a');
+        a.href='https://uri.amap.com/search?keyword='+encodeURIComponent(m[1])+'&city='+encodeURIComponent(places[m[1]])+'&callnative=1';
+        a.target='_blank';a.rel='noopener';a.className='amap-link';a.textContent=m[1];
+        frag.appendChild(a);
+        last=m.index+m[1].length;
+      }
+      if(last<t.length)frag.appendChild(document.createTextNode(t.slice(last)));
+      n.parentNode.replaceChild(frag,n);
+    }else if(n.nodeType===1){
+      var tag=n.tagName;
+      if(tag==='A'||tag==='SCRIPT'||tag==='STYLE'||tag==='TITLE'||n.classList&&n.classList.contains('metro'))return;
+      var kids=Array.prototype.slice.call(n.childNodes);
+      kids.forEach(walk);
+    }
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){walk(document.body)});
+  else walk(document.body);
 })();
 </script>
 </body>
