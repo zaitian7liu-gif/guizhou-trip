@@ -3,7 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>黔行·七日 · 贵州国庆细致攻略</title>
+<title>黔行·七日 · 贵州国庆攻略</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="黔行·七日 · 贵州国庆攻略">
+<meta property="og:description" content="10.3-10.9 七日贵州 · 天河潭 · 织金洞 · 荔波小七孔 · 黄果树 · 凯里 · 全路线 + 美食 + 打包清单">
+<meta property="og:image" content="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200">
+<meta property="og:site_name" content="黔行 · 七日">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="黔行·七日 · 贵州国庆攻略">
+<meta name="twitter:description" content="10.3-10.9 七日贵州 · 全路线 + 美食 + 打包清单">
+<meta name="twitter:image" content="https://images.unsplash.com/photo-1528181304800-259b08848526?w=1200">
+<meta name="description" content="贵州国庆七日游攻略 · 贵阳观山湖大本营 · 五景一寨 · 每日路线 + 美食 + 天气 + 打包清单">
+<meta name="keywords" content="贵州,国庆,荔波小七孔,黄果树,织金洞,天河潭,凯里,旅游攻略">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -206,6 +218,24 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .route-map-chain .node.end{border-color:var(--heavy);background:rgba(200,110,74,.1)}
 .route-map-chain .arr{color:var(--mid);font-weight:700;font-size:14px}
 @media(prefers-color-scheme:dark){.route-map{background:linear-gradient(135deg,#2a2418,#2a2318);border-color:#5a4a2a}.route-map-chain{color:#c5bda8}.route-map-chain .node{background:#1e2723;color:#e8dfc7}}
+
+/* ==== 清单进度条 ==== */
+.pk-progress{background:linear-gradient(90deg,#f0e8d0,#e8dfc7);border-radius:100px;height:22px;overflow:hidden;margin:20px 0 26px;position:relative;border:1px solid #d5cba6}
+.pk-progress-bar{background:linear-gradient(90deg,var(--mid),#b48920);height:100%;width:0;transition:width .35s ease-out;border-radius:100px;position:relative}
+.pk-progress-bar::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 1.6s infinite}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.pk-progress-text{position:absolute;top:0;left:0;right:0;height:22px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:700;color:#5c3a20;letter-spacing:2px;z-index:2;pointer-events:none}
+.pk-progress-text b{color:var(--heavy);margin:0 3px;font-variant-numeric:tabular-nums}
+@media(prefers-color-scheme:dark){
+  .pk-progress{background:linear-gradient(90deg,#2a2418,#2a2318);border-color:#5a4a2a}
+  .pk-progress-text{color:#e5c88a}
+  .pk-progress-text b{color:#e5b090}
+}
+/* ==== 一键复制按钮 ==== */
+.copy-btn{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:2px 10px;background:rgba(212,169,68,.15);color:var(--mid);border:1px solid rgba(212,169,68,.35);border-radius:100px;font-size:11px;font-weight:600;cursor:pointer;letter-spacing:.5px;transition:all .15s;vertical-align:middle;font-family:inherit;user-select:none}
+.copy-btn:hover{background:var(--mid);color:#fff;border-color:var(--mid)}
+.copy-btn.copied{background:#5fa886;color:#fff;border-color:#5fa886}
+@media(prefers-color-scheme:dark){.copy-btn{background:rgba(212,169,68,.2);color:#e5c88a;border-color:rgba(212,169,68,.4)}}
 </style>
 </head>
 <body>
@@ -606,7 +636,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   <div style="background:linear-gradient(135deg,#e8f0e5,#d0e0d5);border-radius:12px;padding:20px 24px;margin-bottom:20px;border-left:5px solid #2d5f3f">
     <div style="color:#8b6914;font-weight:700;font-size:12px;letter-spacing:2px;margin-bottom:10px">🎯 一 码 游 贵 州 小 程 序 · 3 步 走</div>
     <ol style="color:#3d3d3d;font-size:14.5px;line-height:2;padding-left:22px">
-      <li>打开<b>微信</b> → 顶部搜索框输入 <b style="color:#c86e4a;background:rgba(200,110,74,.1);padding:1px 6px;border-radius:4px" onclick="navigator.clipboard.writeText('一码游贵州');this.textContent='✓ 已复制';setTimeout(()=>{this.textContent='一码游贵州'},1500)" title="点击复制">一码游贵州</b>(点击复制)</li>
+      <li>打开<b>微信</b> → 顶部搜索框输入 <b>一码游贵州</b><button type="button" class="copy-btn" data-copy="一码游贵州">📋 复制</button>(点击复制)</li>
       <li>选择<b>小程序</b>标签 → 进入官方版本(贵州省文旅厅出品)</li>
       <li>首页搜索目的地(如"荔波小七孔")→ 选日期 → 预约 → 二维码入园</li>
     </ol>
@@ -614,10 +644,10 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
   <div class="sec"><div class="sec-t">— 景 区 官 方 公 众 号 · 微 信 搜 索 —</div>
     <ul>
-      <li><b>荔波小七孔</b> · 微信搜 → <b style="color:#c86e4a" onclick="navigator.clipboard.writeText('荔波小七孔景区');this.textContent='✓ 已复制';setTimeout(()=>{this.textContent='荔波小七孔景区'},1500)">荔波小七孔景区</b>(点击复制) · 门票 + 观光车联票约 170 元</li>
-      <li><b>黄果树瀑布</b> · 微信搜 → <b style="color:#c86e4a" onclick="navigator.clipboard.writeText('黄果树旅游');this.textContent='✓ 已复制';setTimeout(()=>{this.textContent='黄果树旅游'},1500)">黄果树旅游</b>(点击复制) · 门票 + 观光车约 210 元</li>
-      <li><b>织金洞</b> · 微信搜 → <b style="color:#c86e4a" onclick="navigator.clipboard.writeText('织金洞景区');this.textContent='✓ 已复制';setTimeout(()=>{this.textContent='织金洞景区'},1500)">织金洞景区</b>(点击复制) · 门票 + 电瓶车约 120 元</li>
-      <li><b>天河潭</b> · 微信搜 → <b style="color:#c86e4a" onclick="navigator.clipboard.writeText('天河潭旅游');this.textContent='✓ 已复制';setTimeout(()=>{this.textContent='天河潭旅游'},1500)">天河潭旅游</b>(点击复制) · 船 + 索道联票约 90 元</li>
+      <li><b>荔波小七孔</b> · 微信搜 → <b>荔波小七孔景区</b><button type="button" class="copy-btn" data-copy="荔波小七孔景区">📋 复制</button>(点击复制) · 门票 + 观光车联票约 170 元</li>
+      <li><b>黄果树瀑布</b> · 微信搜 → <b>黄果树旅游</b><button type="button" class="copy-btn" data-copy="黄果树旅游">📋 复制</button>(点击复制) · 门票 + 观光车约 210 元</li>
+      <li><b>织金洞</b> · 微信搜 → <b>织金洞景区</b><button type="button" class="copy-btn" data-copy="织金洞景区">📋 复制</button>(点击复制) · 门票 + 电瓶车约 120 元</li>
+      <li><b>天河潭</b> · 微信搜 → <b>天河潭旅游</b><button type="button" class="copy-btn" data-copy="天河潭旅游">📋 复制</button>(点击复制) · 船 + 索道联票约 90 元</li>
       <li><b>青岩古镇</b> · 免票(部分景点单独收费) · 无需预约</li>
       <li><b>黔灵山公园</b> · 门票 5 元 · 现场买 · 无需预约</li>
       <li><b>甲秀楼</b> · 免票 · 无需预约</li>
@@ -629,7 +659,8 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
 <section class="card checklist">
   <h2 style="font-family:var(--serif);color:#1e4d2b;font-size:28px;letter-spacing:2px;margin-bottom:16px">🎒 必备清单 · 7 日贵州</h2>
-  <p style="color:#555;font-size:14px;margin-bottom:20px">按目的地×季节×天气×环境定制。行前逐项打勾,漏一样可能行程崩盘。</p>
+  <p style="color:#555;font-size:14px;margin-bottom:12px">按目的地×季节×天气×环境定制。行前逐项打勾,漏一样可能行程崩盘。</p>
+  <div class="pk-progress"><div class="pk-progress-bar" id="pkBar"></div><div class="pk-progress-text">已收 <b id="pkDone">0</b> / <b id="pkTotal">0</b> · 出发前再核对一次</div></div>
 
   <div class="sec"><div class="sec-t">— 证 件 & 电 子 —</div>
     <ul>
@@ -723,20 +754,48 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
   var saved={};
   try{saved=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){}
   var boxes=document.querySelectorAll('.checklist input[type=checkbox]');
+  var totalEl=document.getElementById('pkTotal');
+  var doneEl=document.getElementById('pkDone');
+  var barEl=document.getElementById('pkBar');
+  if(totalEl)totalEl.textContent=boxes.length;
+  function refresh(){
+    var n=0;
+    boxes.forEach(function(b){if(b.checked)n++});
+    if(doneEl)doneEl.textContent=n;
+    if(barEl)barEl.style.width=(boxes.length?Math.round(n/boxes.length*100):0)+'%';
+  }
   boxes.forEach(function(b){
     var k=b.dataset.k;
     if(saved[k])b.checked=true;
     b.addEventListener('change',function(){
       saved[k]=b.checked;
       try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+      refresh();
     });
   });
+  refresh();
   var reset=document.getElementById('checklistReset');
   if(reset)reset.addEventListener('click',function(){
     if(!confirm('清空所有已勾选?'))return;
     boxes.forEach(function(b){b.checked=false});
     saved={};
     try{localStorage.removeItem(KEY)}catch(e){}
+    refresh();
+  });
+  // 一键复制
+  document.addEventListener('click',function(e){
+    var btn=e.target.closest('.copy-btn');
+    if(!btn)return;
+    var text=btn.dataset.copy;
+    if(!text)return;
+    function ok(){btn.classList.add('copied');var old=btn.textContent;btn.textContent='✓ 已复制';setTimeout(function(){btn.classList.remove('copied');btn.textContent=old},1600)}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(ok)}
+    else{
+      var ta=document.createElement('textarea');
+      ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');ok()}catch(err){alert('复制失败,请手动选中: '+text)}
+      document.body.removeChild(ta);
+    }
   });
 })();
 </script>
