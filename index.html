@@ -26,7 +26,7 @@
 body{font-family:var(--sans);color:#2b2b2b;background:var(--paper);background-image:radial-gradient(circle at 10% 20%,rgba(122,184,154,.06) 0,transparent 40%),radial-gradient(circle at 90% 80%,rgba(212,169,68,.06) 0,transparent 40%);line-height:1.8;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;font-size:16px;text-rendering:optimizeLegibility}
 p,li,dd,dt{font-feature-settings:"kern";text-spacing-trim:normal;-webkit-text-spacing-trim:normal}
 .itin dd,.sec li,.sec p,.eats li,.metro,.tip,.wx-info{letter-spacing:.35px;word-spacing:.08em}
-.hero{background:linear-gradient(135deg,#1e4d2b 0%,#2d5f3f 45%,#4a7c59 100%);color:#faf7f0;padding:90px 24px 110px;text-align:center;position:relative;overflow:hidden}
+.hero{background:linear-gradient(160deg,#0d2a1a 0%,#1a3d2b 35%,#1e4d6e 70%,#2d3a5f 100%);color:#faf7f0;padding:100px 24px 120px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 30%,rgba(212,169,68,.18),transparent 50%),radial-gradient(circle at 80% 70%,rgba(255,255,255,.1),transparent 50%);pointer-events:none}
 .hero::after{content:"";position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(180deg,transparent,var(--paper));pointer-events:none}
 .mountains{position:absolute;bottom:60px;left:0;right:0;height:80px;opacity:.15;pointer-events:none}
@@ -257,7 +257,21 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 .day-toggle.open{background:linear-gradient(135deg,#8b6914,var(--mid))}
 .day-toggle .arr{transition:transform .3s;display:inline-block;margin-left:4px}
 .day-toggle.open .arr{transform:rotate(180deg)}
-/* ==== hero 倒计时胶囊 ==== */
+/* ==== Day card 顶部 banner 图 ==== */
+.card.day{overflow:visible}
+.day-banner{height:160px;border-radius:16px 16px 0 0;margin:-48px -52px 28px;background-size:cover;background-position:center;position:relative;overflow:hidden}
+.day-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 100%)}
+.day-banner-label{position:absolute;bottom:14px;left:20px;z-index:2;color:#fff;font-family:var(--serif);font-size:18px;font-weight:700;letter-spacing:3px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.day-banner-sub{display:block;font-size:11px;font-weight:400;letter-spacing:2px;opacity:.85;margin-top:3px;font-family:var(--sans)}
+/* per-day 颜色主题 */
+#day1{border-left-color:#5fa886}
+#day2{border-left-color:#3a8fce}
+#day3{border-left-color:#8b7355}
+#day4{border-left-color:#2d7a4a}
+#day5{border-left-color:#8b4a8b}
+#day6{border-left-color:#1a6b8a}
+#day7{border-left-color:#c86e4a}
+@media(max-width:768px){.day-banner{margin:-32px -24px 20px;height:120px}}
 #heroClock{display:inline-block;padding:10px 24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:13px;letter-spacing:1.5px;color:#f5deac;position:relative;z-index:1}
 #heroClock b{color:#fff;font-weight:800}
 /* ==== 天气 chip ==== */
@@ -316,9 +330,8 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
   <div class="sub">A SEVEN-DAY SOJOURN IN GUIZHOU</div>
   <div class="deco"></div>
   <div class="meta">
-    <span>📅 10.03 – 10.09</span>
-    <span>🏨 观山湖 · 林城西路</span>
-    <span>🏔 五景</span>
+    <div style="font-size:15px;letter-spacing:2px;opacity:.9">📅 2026年10月3日 — 10月9日</div>
+    <div style="font-size:13px;letter-spacing:3px;opacity:.7;margin-top:6px">🏨 观山湖 · 林城西路 &nbsp;·&nbsp; 🏔 天河潭 · 织金洞 · 荔波 · 凯里 · 黄果树</div>
   </div>
   <div id="heroClock" style="margin-top:18px;font-size:13px;letter-spacing:2px;opacity:.85;position:relative;z-index:1;color:#f5deac;font-family:var(--serif)"></div>
   <div class="mountains"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#faf7f0" d="M0,100 L0,60 L100,40 L200,55 L300,25 L400,50 L500,20 L600,45 L700,15 L800,40 L900,30 L1000,55 L1100,35 L1200,50 L1200,100 Z"/></svg></div>
@@ -387,6 +400,9 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 <div style="max-width:1080px;margin:0 auto;padding:0 24px"><div class="amap-banner">📍 <b>虚线下划线</b>的景点/餐厅/车站可点击 · 一键跳转<b>高德地图</b>导航</div></div>
 
 <section class="card day" id="day1">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1596376405575-034a92e71c83?w=1200&q=80')">
+    <div class="day-banner-label">DAY 01 · 抵黔<span class="day-banner-sub">贵阳 · 观山湖</span></div>
+  </div>
   <div class="day-head">
     <div><div class="num">DAY 01</div><h3>抵黔 · 观山湖落脚</h3><div class="date">10月3日 · 周五</div></div>
   </div>
@@ -427,6 +443,9 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day2">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?w=1200&q=80')">
+    <div class="day-banner-label">DAY 02 · 天河潭<span class="day-banner-sub">贵阳 · 水景山色</span></div>
+  </div>
   <div class="day-head">
     <div><div class="num">DAY 02</div><h3>天河潭 · 山水浓缩版</h3><div class="date">10月4日 · 周六</div></div>
   </div>
@@ -467,6 +486,9 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day3">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1551244072-5d12893278bc?w=1200&q=80')">
+    <div class="day-banner-label">DAY 03 · 织金洞<span class="day-banner-sub">贵州 · 喀斯特溶洞</span></div>
+  </div>
   <div class="day-head">
     <div><div class="num">DAY 03</div><h3>织金洞 · 溶洞之王</h3><div class="date">10月5日 · 周日</div></div>
   </div>
@@ -515,6 +537,9 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day4">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=1200&q=80')">
+    <div class="day-banner-label">DAY 04 · 荔波小七孔<span class="day-banner-sub">黔南 · 绿水青山</span></div>
+  </div>
   <div class="day-head">
     <div><div class="num">DAY 04</div><h3>荔波 · 地球腰带绿宝石</h3><div class="date">10月6日 · 周一</div></div>
   </div>
@@ -565,6 +590,9 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day5">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1200&q=80')">
+    <div class="day-banner-label">DAY 05 · 凯里<span class="day-banner-sub">黔东南 · 苗侗风情</span></div>
+  </div>
   <div class="day-head">
     <div><div class="num">DAY 05</div><h3>凯里 1 日 · 苗侗风土 + 逛吃</h3><div class="date">10月7日 · 周二</div></div>
   </div>
@@ -621,6 +649,9 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day6">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1503264116251-35a269479413?w=1200&q=80')">
+    <div class="day-banner-label">DAY 06 · 黄果树瀑布<span class="day-banner-sub">安顺 · 中国第一瀑</span></div>
+  </div>
   <div class="day-head">
     <div><div class="num">DAY 06</div><h3>黄果树 · 亚洲第一瀑</h3><div class="date">10月8日 · 周三</div></div>
   </div>
@@ -672,6 +703,9 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day7">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1200&q=80')">
+    <div class="day-banner-label">DAY 07 · 归京<span class="day-banner-sub">贵阳 · 收官告别</span></div>
+  </div>
   <div class="day-head">
     <div><div class="num">DAY 07</div><h3>黔灵慢游 · 归 京</h3><div class="date">10月9日 · 周四</div></div>
   </div>
