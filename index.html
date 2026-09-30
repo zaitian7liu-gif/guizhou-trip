@@ -272,7 +272,7 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 #day6{border-left-color:#1a6b8a}
 #day7{border-left-color:#c86e4a}
 @media(max-width:768px){.day-banner{margin:-32px -24px 20px;height:120px}}
-#heroClock{display:inline-block;padding:10px 24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:13px;letter-spacing:1.5px;color:#f5deac;position:relative;z-index:1}
+#heroClock{display:block;text-align:center;padding:10px 24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:13px;letter-spacing:1.5px;color:#f5deac;position:relative;z-index:1;margin:0 auto;width:fit-content}
 #heroClock b{color:#fff;font-weight:800}
 /* ==== 天气 chip ==== */
 .wx-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:12px;font-weight:600;background:rgba(255,255,255,.7);border:1px solid rgba(90,114,128,.15);color:#3a5a4a;margin:3px 3px 0 0;white-space:nowrap;letter-spacing:.3px}
@@ -333,7 +333,7 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
     <div style="font-size:15px;letter-spacing:2px;opacity:.9">📅 2026年10月3日 — 10月9日</div>
     <div style="font-size:13px;letter-spacing:3px;opacity:.7;margin-top:6px">🏨 观山湖 · 林城西路 &nbsp;·&nbsp; 🏔 天河潭 · 织金洞 · 荔波 · 凯里 · 黄果树</div>
   </div>
-  <div id="heroClock" style="margin-top:18px;font-size:13px;letter-spacing:2px;opacity:.85;position:relative;z-index:1;color:#f5deac;font-family:var(--serif)"></div>
+  <div id="heroClock" style="margin-top:20px;position:relative;z-index:1;"></div>
   <div class="mountains"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#faf7f0" d="M0,100 L0,60 L100,40 L200,55 L300,25 L400,50 L500,20 L600,45 L700,15 L800,40 L900,30 L1000,55 L1100,35 L1200,50 L1200,100 Z"/></svg></div>
 </div>
 
