@@ -297,6 +297,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
     <span>🏨 观山湖 · 林城西路</span>
     <span>🏔 五景</span>
   </div>
+  <div id="heroClock" style="margin-top:18px;font-size:13px;letter-spacing:2px;opacity:.85;position:relative;z-index:1;color:#f5deac;font-family:var(--serif)"></div>
   <div class="mountains"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#faf7f0" d="M0,100 L0,60 L100,40 L200,55 L300,25 L400,50 L500,20 L600,45 L700,15 L800,40 L900,30 L1000,55 L1100,35 L1200,50 L1200,100 Z"/></svg></div>
 </div>
 
@@ -963,7 +964,35 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 </script>
 
 <script>
-// booking 表抢票日 badge：还有 N 天 / 今天！/ 已过
+// hero 时钟 + 倒计时
+(function(){
+  var el=document.getElementById('heroClock');
+  if(!el)return;
+  var depart=new Date('2026-10-03T00:00:00');
+  var end=new Date('2026-10-09T23:59:59');
+  function tick(){
+    var now=new Date();
+    var y=now.getFullYear(),mo=now.getMonth()+1,d=now.getDate();
+    var h=String(now.getHours()).padStart(2,'0'),mi=String(now.getMinutes()).padStart(2,'0'),s=String(now.getSeconds()).padStart(2,'0');
+    var dateStr=y+'年'+mo+'月'+d+'日 '+h+':'+mi+':'+s;
+    var diff=depart-now;
+    var cdStr;
+    if(now>=depart&&now<=end){
+      cdStr='🏕 行程进行中';
+    }else if(diff>0){
+      var days=Math.floor(diff/86400000);
+      var hrs=Math.floor((diff%86400000)/3600000);
+      var mins=Math.floor((diff%3600000)/60000);
+      var secs=Math.floor((diff%60000)/1000);
+      cdStr='距出发 <b>'+days+'天 '+hrs+'h '+mins+'m '+secs+'s</b>';
+    }else{
+      cdStr='✈️ 行程已结束';
+    }
+    el.innerHTML=dateStr+'&nbsp;&nbsp;·&nbsp;&nbsp;'+cdStr;
+  }
+  tick();
+  setInterval(tick,1000);
+})();
 (function(){
   // 水帘洞预约窗口动态文字
   var slw=document.getElementById('slwMsg');
