@@ -336,7 +336,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
   <div style="font-size:12px;color:#8b6914;font-weight:700;letter-spacing:3px;margin-top:32px;margin-bottom:10px">— 抢 票 日 历 · 别 错 过 放 票 早 8:00 —</div>
   <div style="background:#fdf6ed;border:1px solid #e8dcc5;border-radius:10px;padding:14px 16px;margin-bottom:10px">
-    <div style="background:#fff1f0;border-left:4px solid #d94040;border-radius:6px;padding:10px 14px;margin-bottom:12px;font-size:13.5px;color:#7a1a1a;line-height:1.7">🔴 <b>水帘洞名额已开放</b>(10.8 需 T-14 · 9.24 起放) · 今日 9.30,只剩 8 天窗口,大概率已抢光 · <b>立刻打开「安旅通」小程序查余票</b>,没了就走 6 号线远观。</div>
+    <div id="slwBanner" style="background:#fff1f0;border-left:4px solid #d94040;border-radius:6px;padding:10px 14px;margin-bottom:12px;font-size:13.5px;color:#7a1a1a;line-height:1.7">🔴 <b>水帘洞名额已开放</b>(10.8 需 T-14 · 9.24 起放) · <span id="slwMsg">正在计算…</span></div>
     <table style="width:100%;border-collapse:collapse;font-size:13.5px;color:#3d3d3d">
       <thead>
         <tr style="background:#e8f0e5;color:#1e4d2b">
@@ -965,6 +965,16 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 <script>
 // booking 表抢票日 badge：还有 N 天 / 今天！/ 已过
 (function(){
+  // 水帘洞预约窗口动态文字
+  var slw=document.getElementById('slwMsg');
+  if(slw){
+    var t=new Date(); t.setHours(0,0,0,0);
+    var deadline=new Date('2026-10-08'); deadline.setHours(0,0,0,0);
+    var diff=Math.round((deadline-t)/86400000);
+    if(diff<0) slw.innerHTML='游玩日已过，提醒失效。';
+    else if(diff===0) slw.innerHTML='<b>今天就是游玩日！</b>已预约请按时入园。';
+    else slw.innerHTML='距游玩日还有 <b>'+diff+' 天</b>预约窗口'+(diff<=5?'，<b>窗口快关了！立刻打开「安旅通」小程序查余票</b>':'，<b>立刻打开「安旅通」小程序查余票</b>，没了就走 6 号线远观。');
+  }
   var today=new Date(); today.setHours(0,0,0,0);
   document.querySelectorAll('td[data-grab]').forEach(function(td){
     var g=new Date(td.getAttribute('data-grab')); g.setHours(0,0,0,0);
@@ -1006,23 +1016,6 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
     });
     // 当日行程默认展开
     if(card.classList.contains('today')){wrap.classList.add('open');btn.classList.add('open');btn.innerHTML='收起 <span class="arr">▾</span>';}
-  });
-})();
-</script>
-
-<script>
-// booking 表抢票日 badge：还有 N 天 / 今天！/ 已过
-(function(){
-  var today=new Date(); today.setHours(0,0,0,0);
-  document.querySelectorAll('td[data-grab]').forEach(function(td){
-    var g=new Date(td.getAttribute('data-grab')); g.setHours(0,0,0,0);
-    var diff=Math.round((g-today)/86400000);
-    var badge=document.createElement('span');
-    badge.style.cssText='display:inline-block;margin-left:6px;padding:1px 7px;border-radius:100px;font-size:11px;font-weight:700;vertical-align:middle;white-space:nowrap';
-    if(diff>0){badge.textContent='还有'+diff+'天';badge.style.background='#e8f0e5';badge.style.color='#1e4d2b';}
-    else if(diff===0){badge.textContent='今天！';badge.style.background='#c86e4a';badge.style.color='#fff';}
-    else{badge.textContent='已过期';badge.style.background='#eee';badge.style.color='#999';}
-    td.appendChild(badge);
   });
 })();
 </script>
