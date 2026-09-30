@@ -34,7 +34,7 @@ p,li,dd,dt{font-feature-settings:"kern";text-spacing-trim:normal;-webkit-text-sp
 .hero h1{font-size:60px;font-weight:600;letter-spacing:10px;margin-bottom:20px;font-family:var(--serif);position:relative;text-shadow:0 2px 20px rgba(0,0,0,.2);padding-left:10px}
 .hero .sub{font-size:13px;opacity:.75;letter-spacing:6px;font-weight:300;position:relative;text-transform:uppercase}
 .hero .deco{width:60px;height:2px;background:#d4a944;margin:28px auto;position:relative}
-.hero .meta{margin-top:8px;display:inline-flex;gap:36px;padding:18px 40px;background:rgba(255,255,255,.1);border-radius:100px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);position:relative;font-size:15px;letter-spacing:2px;flex-wrap:wrap;justify-content:center}
+.hero .meta{margin-top:0;display:block;padding:20px 40px;background:rgba(255,255,255,.1);border-radius:20px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15);font-size:15px;letter-spacing:2px;text-align:center;width:fit-content;margin-left:auto;margin-right:auto}
 .container{max-width:1080px;margin:-60px auto 0;padding:0 24px 60px;position:relative;z-index:2}
 .card{background:#fff;border-radius:20px;padding:48px 52px;box-shadow:0 10px 40px rgba(30,77,43,.08);margin-bottom:26px;position:relative}
 .card+.card::before{content:"❋";position:absolute;top:-16px;left:50%;transform:translateX(-50%);color:var(--mid);background:var(--paper);padding:0 12px;font-size:14px;opacity:.5}
@@ -326,14 +326,18 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
   <div class="sidenav-list" id="snList"></div>
 </nav>
 <div class="hero">
-  <h1>黔行 · 七日</h1>
-  <div class="sub">A SEVEN-DAY SOJOURN IN GUIZHOU</div>
-  <div class="deco"></div>
-  <div class="meta">
-    <div style="font-size:15px;letter-spacing:2px;opacity:.9">📅 2026年10月3日 — 10月9日</div>
-    <div style="font-size:13px;letter-spacing:3px;opacity:.7;margin-top:6px">🏨 观山湖 · 林城西路 &nbsp;·&nbsp; 🏔 天河潭 · 织金洞 · 荔波 · 凯里 · 黄果树</div>
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:18px;text-align:center">
+    <h1 style="margin:0">黔行 · 七日</h1>
+    <div class="sub">A SEVEN-DAY SOJOURN IN GUIZHOU</div>
+    <div class="deco" style="margin:0"></div>
+    <div class="meta">
+      <div style="font-size:16px;letter-spacing:2px;font-weight:600;margin-bottom:8px">📅 2026年10月3日 — 10月9日</div>
+      <div style="font-size:13px;letter-spacing:2px;opacity:.75">🏨 观山湖 · 林城西路 &nbsp;·&nbsp; 🏔 天河潭 · 织金洞 · 荔波 · 凯里 · 黄果树</div>
+      <div style="border-top:1px solid rgba(255,255,255,.2);margin-top:16px;padding-top:14px">
+        <div id="heroClock"></div>
+      </div>
+    </div>
   </div>
-  <div id="heroClock" style="margin-top:20px;position:relative;z-index:1;"></div>
   <div class="mountains"><svg viewBox="0 0 1200 100" preserveAspectRatio="none"><path fill="#faf7f0" d="M0,100 L0,60 L100,40 L200,55 L300,25 L400,50 L500,20 L600,45 L700,15 L800,40 L900,30 L1000,55 L1100,35 L1200,50 L1200,100 Z"/></svg></div>
 </div>
 
@@ -400,8 +404,8 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 <div style="max-width:1080px;margin:0 auto;padding:0 24px"><div class="amap-banner">📍 <b>虚线下划线</b>的景点/餐厅/车站可点击 · 一键跳转<b>高德地图</b>导航</div></div>
 
 <section class="card day" id="day1">
-  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1596376405575-034a92e71c83?w=1200&q=80')">
-    <div class="day-banner-label">DAY 01 · 抵黔<span class="day-banner-sub">贵阳 · 观山湖</span></div>
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80')">
+    <div class="day-banner-label">DAY 01 · 抵黔<span class="day-banner-sub">贵阳 · 观山湖落脚</span></div>
   </div>
   <div class="day-head">
     <div><div class="num">DAY 01</div><h3>抵黔 · 观山湖落脚</h3><div class="date">10月3日 · 周五</div></div>
@@ -486,7 +490,7 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day3">
-  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1551244072-5d12893278bc?w=1200&q=80')">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1520637836862-4d197d17c8a4?w=1200&q=80')">
     <div class="day-banner-label">DAY 03 · 织金洞<span class="day-banner-sub">贵州 · 喀斯特溶洞</span></div>
   </div>
   <div class="day-head">
@@ -649,7 +653,7 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day6">
-  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1503264116251-35a269479413?w=1200&q=80')">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=1200&q=80')">
     <div class="day-banner-label">DAY 06 · 黄果树瀑布<span class="day-banner-sub">安顺 · 中国第一瀑</span></div>
   </div>
   <div class="day-head">
@@ -703,7 +707,7 @@ body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,
 </section>
 
 <section class="card day" id="day7">
-  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=1200&q=80')">
+  <div class="day-banner" style="background-image:url('https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80')">
     <div class="day-banner-label">DAY 07 · 归京<span class="day-banner-sub">贵阳 · 收官告别</span></div>
   </div>
   <div class="day-head">
