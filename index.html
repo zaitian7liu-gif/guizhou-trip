@@ -245,6 +245,13 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .card.day.today::before{background:var(--heavy);box-shadow:0 0 0 2px var(--heavy),0 0 30px rgba(200,110,74,.6)}
 .today-badge{display:inline-block;background:var(--heavy);color:#fff;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:2px;margin-left:10px;vertical-align:middle;animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+/* ==== Day card 折叠 ==== */
+.day-body-fold{overflow:hidden;transition:max-height .35s cubic-bezier(.4,0,.2,1),opacity .25s;max-height:0;opacity:0}
+.day-body-fold.open{max-height:9999px;opacity:1}
+.day-toggle{display:flex;align-items:center;gap:6px;margin:12px 0 2px;padding:7px 14px;background:rgba(30,77,43,.07);border:1px dashed #a3c5a5;border-radius:100px;font-size:13px;font-weight:600;color:#2d5f3f;cursor:pointer;width:fit-content;transition:background .15s;user-select:none}
+.day-toggle:hover{background:rgba(30,77,43,.14)}
+.day-toggle .arr{transition:transform .3s;display:inline-block}
+.day-toggle.open .arr{transform:rotate(180deg)}
 /* ==== 动线 mini map ==== */
 .route-map{background:linear-gradient(135deg,#f5f1e4,#ebe4d0);border-radius:12px;padding:16px 20px;margin:16px 0;border:1px dashed #d5cba6}
 .route-map-t{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:3px;margin-bottom:10px}
@@ -301,7 +308,7 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 
 <section class="card overview">
   <h2>行程概览</h2>
-  <div style="background:linear-gradient(135deg,#fff5ec,#fce4d0);border-radius:10px;padding:12px 18px;margin-bottom:16px;font-size:14px;color:#5c3a20;border-left:4px solid #c86e4a"><b>🏨 酒店</b> · 汉庭酒店(贵阳市政府林城西路地铁站店) · <a href="https://uri.amap.com/marker?position=106.6238,26.6103&name=%E6%B1%89%E5%BA%AD%E9%85%92%E5%BA%97%28%E8%B4%B5%E9%98%B3%E5%B8%82%E6%94%BF%E5%BA%9C%E6%9E%97%E5%9F%8E%E8%A5%BF%E8%B7%AF%E5%9C%B0%E9%93%81%E7%AB%99%E5%BA%97%29&callnative=1" target="_blank" rel="noopener" style="color:#c86e4a;font-weight:600">📍 高德地图</a></div>
+  <div style="background:linear-gradient(135deg,#fff5ec,#fce4d0);border-radius:10px;padding:12px 18px;margin-bottom:16px;font-size:14px;color:#5c3a20;border-left:4px solid #c86e4a"><b>🏨 酒店</b> · 林城西路酒店 · <a href="https://uri.amap.com/marker?position=106.6238,26.6103&name=%E6%B1%89%E5%BA%AD%E9%85%92%E5%BA%97%28%E8%B4%B5%E9%98%B3%E5%B8%82%E6%94%BF%E5%BA%9C%E6%9E%97%E5%9F%8E%E8%A5%BF%E8%B7%AF%E5%9C%B0%E9%93%81%E7%AB%99%E5%BA%97%29&callnative=1" target="_blank" rel="noopener" style="color:#c86e4a;font-weight:600">📍 高德地图</a></div>
   <div class="navmode">
     <span class="lbl">🧭 导航起点</span>
     <button id="nmHotel" class="on" type="button">🏨 从酒店出发</button>
@@ -340,11 +347,11 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
         </tr>
       </thead>
       <tbody>
-        <tr style="border-top:1px solid #eadfcb;background:#fff1f0"><td style="padding:9px 10px;color:#7a1a1a;font-weight:700">9.24 起</td><td style="padding:9px 10px">10.08</td><td style="padding:9px 10px"><b>黄果树水帘洞名额</b> · 单独约</td><td style="padding:9px 10px">安旅通</td></tr>
-        <tr style="border-top:1px solid #eadfcb"><td style="padding:9px 10px;color:#8b6914;font-weight:700">10.01 早 8:00</td><td style="padding:9px 10px">10.04</td><td style="padding:9px 10px"><b>天河潭</b> · 船 + 索道联票</td><td style="padding:9px 10px">一码游贵州</td></tr>
-        <tr style="border-top:1px solid #eadfcb"><td style="padding:9px 10px;color:#8b6914;font-weight:700">10.02 早 8:00</td><td style="padding:9px 10px">10.05</td><td style="padding:9px 10px"><b>织金洞</b> · 门票 + 电瓶车 · 直通车另订</td><td style="padding:9px 10px">一码游贵州 / 好行网</td></tr>
-        <tr style="border-top:1px solid #eadfcb;background:#fff5ec"><td style="padding:9px 10px;color:#c86e4a;font-weight:700">10.03 早 8:00 ⚠️</td><td style="padding:9px 10px">10.06</td><td style="padding:9px 10px"><b>荔波小七孔</b> · 联票 · 国庆最抢手</td><td style="padding:9px 10px">一码游贵州</td></tr>
-        <tr style="border-top:1px solid #eadfcb;background:#fff5ec"><td style="padding:9px 10px;color:#c86e4a;font-weight:700">10.05 早 8:00 ⚠️</td><td style="padding:9px 10px">10.08</td><td style="padding:9px 10px"><b>黄果树瀑布</b> · 门票 + 观光车</td><td style="padding:9px 10px">一码游贵州</td></tr>
+        <tr style="border-top:1px solid #eadfcb;background:#fff1f0"><td style="padding:9px 10px;color:#7a1a1a;font-weight:700" data-grab="2026-09-24">9.24 起</td><td style="padding:9px 10px">10.08</td><td style="padding:9px 10px"><b>黄果树水帘洞名额</b> · 单独约</td><td style="padding:9px 10px">安旅通</td></tr>
+        <tr style="border-top:1px solid #eadfcb"><td style="padding:9px 10px;color:#8b6914;font-weight:700" data-grab="2026-10-01">10.01 早 8:00</td><td style="padding:9px 10px">10.04</td><td style="padding:9px 10px"><b>天河潭</b> · 船 + 索道联票</td><td style="padding:9px 10px">一码游贵州</td></tr>
+        <tr style="border-top:1px solid #eadfcb"><td style="padding:9px 10px;color:#8b6914;font-weight:700" data-grab="2026-10-02">10.02 早 8:00</td><td style="padding:9px 10px">10.05</td><td style="padding:9px 10px"><b>织金洞</b> · 门票 + 电瓶车 · 直通车另订</td><td style="padding:9px 10px">一码游贵州 / 好行网</td></tr>
+        <tr style="border-top:1px solid #eadfcb;background:#fff5ec"><td style="padding:9px 10px;color:#c86e4a;font-weight:700" data-grab="2026-10-03">10.03 早 8:00 ⚠️</td><td style="padding:9px 10px">10.06</td><td style="padding:9px 10px"><b>荔波小七孔</b> · 联票 · 国庆最抢手</td><td style="padding:9px 10px">一码游贵州</td></tr>
+        <tr style="border-top:1px solid #eadfcb;background:#fff5ec"><td style="padding:9px 10px;color:#c86e4a;font-weight:700" data-grab="2026-10-05">10.05 早 8:00 ⚠️</td><td style="padding:9px 10px">10.08</td><td style="padding:9px 10px"><b>黄果树瀑布</b> · 门票 + 观光车</td><td style="padding:9px 10px">一码游贵州</td></tr>
       </tbody>
     </table>
     <div style="font-size:12px;color:#6a5a3a;margin-top:10px;line-height:1.7">☝️ 「抢票日」按官方 <b>T-3</b> 推(部分景区可能 T-2/T-1,以放票通知为准) · <b>10.3 早 8:00 是最难的一战</b>:人在高铁上抢荔波票 · 定闹钟 7:55 · 高铁 wifi 别打游戏 · 详细入口见下方「🎫 景点预约」卡。</div>
@@ -952,6 +959,71 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
     // 已结束
     showBanner('📅 <b>今天是 '+todayStr+'</b> · 行程已结束 · 期待下一段!');
   }
+})();
+</script>
+
+<script>
+// booking 表抢票日 badge：还有 N 天 / 今天！/ 已过
+(function(){
+  var today=new Date(); today.setHours(0,0,0,0);
+  document.querySelectorAll('td[data-grab]').forEach(function(td){
+    var g=new Date(td.getAttribute('data-grab')); g.setHours(0,0,0,0);
+    var diff=Math.round((g-today)/86400000);
+    var badge=document.createElement('span');
+    badge.style.cssText='display:inline-block;margin-left:6px;padding:1px 7px;border-radius:100px;font-size:11px;font-weight:700;vertical-align:middle;white-space:nowrap';
+    if(diff>0){badge.textContent='还有'+diff+'天';badge.style.background='#e8f0e5';badge.style.color='#1e4d2b';}
+    else if(diff===0){badge.textContent='今天！';badge.style.background='#c86e4a';badge.style.color='#fff';}
+    else{badge.textContent='已过期';badge.style.background='#eee';badge.style.color='#999';}
+    td.appendChild(badge);
+  });
+})();
+</script>
+
+<script>
+// Day card 折叠：sec / eats / tip 默认收起，route-map / wx / metro 始终可见
+(function(){
+  document.querySelectorAll('section.card.day').forEach(function(card){
+    var fold=[];
+    card.childNodes.forEach(function(n){
+      if(n.nodeType!==1)return;
+      var cls=n.className||'';
+      if(/\bsec\b|\beats\b|\btip\b/.test(cls)) fold.push(n);
+    });
+    if(!fold.length)return;
+    var wrap=document.createElement('div');
+    wrap.className='day-body-fold';
+    var ref=fold[0];
+    card.insertBefore(wrap,ref);
+    fold.forEach(function(el){wrap.appendChild(el);});
+    var btn=document.createElement('div');
+    btn.className='day-toggle';
+    btn.innerHTML='展开详情 <span class="arr">▾</span>';
+    card.insertBefore(btn,wrap);
+    btn.addEventListener('click',function(){
+      var open=wrap.classList.toggle('open');
+      btn.classList.toggle('open',open);
+      btn.innerHTML=(open?'收起 ':'展开详情 ')+'<span class="arr">▾</span>';
+    });
+    // 当日行程默认展开
+    if(card.classList.contains('today')){wrap.classList.add('open');btn.classList.add('open');btn.innerHTML='收起 <span class="arr">▾</span>';}
+  });
+})();
+</script>
+
+<script>
+// booking 表抢票日 badge：还有 N 天 / 今天！/ 已过
+(function(){
+  var today=new Date(); today.setHours(0,0,0,0);
+  document.querySelectorAll('td[data-grab]').forEach(function(td){
+    var g=new Date(td.getAttribute('data-grab')); g.setHours(0,0,0,0);
+    var diff=Math.round((g-today)/86400000);
+    var badge=document.createElement('span');
+    badge.style.cssText='display:inline-block;margin-left:6px;padding:1px 7px;border-radius:100px;font-size:11px;font-weight:700;vertical-align:middle;white-space:nowrap';
+    if(diff>0){badge.textContent='还有'+diff+'天';badge.style.background='#e8f0e5';badge.style.color='#1e4d2b';}
+    else if(diff===0){badge.textContent='今天！';badge.style.background='#c86e4a';badge.style.color='#fff';}
+    else{badge.textContent='已过期';badge.style.background='#eee';badge.style.color='#999';}
+    td.appendChild(badge);
+  });
 })();
 </script>
 
