@@ -240,7 +240,30 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 .qj .dt{font-size:11px;color:var(--gold);margin-top:4px;letter-spacing:1px}
 @media(prefers-color-scheme:dark){.qj{background:linear-gradient(180deg,#2a2f2b,#20241f);border-color:#3a3f3b}.qj .nm{color:#e8dfc7}}
 @media(max-width:640px){.quickjump{grid-template-columns:repeat(3,1fr)}}
-/* ==== 当日高亮 ==== */
+/* ==== 苗绣装饰纹样 ==== */
+:root{
+  --miao-indigo:#2d4a8a;--miao-red:#c0392b;--miao-teal:#1a6b5a;
+  --pattern:repeating-linear-gradient(45deg,rgba(212,169,68,.07) 0px,rgba(212,169,68,.07) 1px,transparent 1px,transparent 8px),repeating-linear-gradient(-45deg,rgba(95,168,134,.05) 0px,rgba(95,168,134,.05) 1px,transparent 1px,transparent 8px);
+}
+body{background-image:var(--pattern),radial-gradient(circle at 10% 20%,rgba(122,184,154,.06) 0,transparent 40%),radial-gradient(circle at 90% 80%,rgba(212,169,68,.06) 0,transparent 40%)}
+/* card 顶部苗绣色带 */
+.card.day::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:repeating-linear-gradient(90deg,var(--chill) 0,var(--chill) 6px,var(--mid) 6px,var(--mid) 12px,var(--heavy) 12px,var(--heavy) 18px,var(--ink) 18px,var(--ink) 24px);opacity:.55;border-radius:20px 20px 0 0}
+/* sec-t 加菱形装饰 */
+.sec-t::before{content:"◆ ";font-size:8px;opacity:.7;letter-spacing:0}
+.sec-t::after{content:" ◆";font-size:8px;opacity:.7;letter-spacing:0}
+/* ==== 折叠按钮升级 ==== */
+.day-toggle{background:linear-gradient(135deg,var(--ink),#2d5f3f);border:none;border-radius:8px;color:#f5deac;font-size:12.5px;font-weight:700;letter-spacing:2px;padding:8px 20px;box-shadow:0 3px 10px rgba(30,77,43,.25);width:fit-content;transition:all .2s}
+.day-toggle:hover{background:linear-gradient(135deg,#2d5f3f,var(--chill));box-shadow:0 5px 16px rgba(30,77,43,.35);transform:translateY(-1px)}
+.day-toggle.open{background:linear-gradient(135deg,#8b6914,var(--mid))}
+.day-toggle .arr{transition:transform .3s;display:inline-block;margin-left:4px}
+.day-toggle.open .arr{transform:rotate(180deg)}
+/* ==== hero 倒计时胶囊 ==== */
+#heroClock{display:inline-block;padding:10px 24px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:100px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);font-size:13px;letter-spacing:1.5px;color:#f5deac;position:relative;z-index:1}
+#heroClock b{color:#fff;font-weight:800}
+/* ==== 天气 chip ==== */
+.wx-chip{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;font-size:12px;font-weight:600;background:rgba(255,255,255,.7);border:1px solid rgba(90,114,128,.15);color:#3a5a4a;margin:3px 3px 0 0;white-space:nowrap;letter-spacing:.3px}
+.wx-chip.red{background:#fff1f0;border-color:#f0a090;color:#8b3020}
+.wx-chips{margin-top:8px;display:flex;flex-wrap:wrap;gap:0}
 .card.day.today{border-left-color:var(--heavy);box-shadow:0 10px 40px rgba(200,110,74,.25),0 0 0 3px rgba(200,110,74,.15)}
 .card.day.today::before{background:var(--heavy);box-shadow:0 0 0 2px var(--heavy),0 0 30px rgba(200,110,74,.6)}
 .today-badge{display:inline-block;background:var(--heavy);color:#fff;padding:3px 10px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:2px;margin-left:10px;vertical-align:middle;animation:pulse 2s ease-in-out infinite}
@@ -1019,7 +1042,35 @@ footer{text-align:center;padding:30px;color:#999;font-size:13px;letter-spacing:2
 </script>
 
 <script>
-// Day card 折叠：sec / eats / tip 默认收起，route-map / wx / metro 始终可见
+// 天气卡穿搭 chip 化
+(function(){
+  var CHIPS=[
+    ['防滑鞋','👟'],['登山鞋','👟'],['徒步鞋','👟'],['运动鞋','👟'],['凉鞋','👡'],
+    ['速干裤','👖'],['长裤','👖'],['速干','💧'],
+    ['薄外套','🧥'],['防风外套','🧥'],['冲锋衣','🧥'],['外套','🧥'],['摇粒绒','🧶'],
+    ['雨衣','🌧'],['折叠伞','☂'],['伞','☂'],
+    ['防晒','🌞'],['防蚊','🦟'],['充电宝','🔋'],
+    ['手机防水袋','📱'],['防水袋','📱'],
+  ];
+  document.querySelectorAll('.wx-info').forEach(function(el){
+    var full=el.innerHTML;
+    var clothStart=full.indexOf('<b>穿搭:</b>');
+    if(clothStart<0)return;
+    var text=el.textContent;
+    var matched=[];
+    CHIPS.forEach(function(pair){
+      if(text.indexOf(pair[0])>=0) matched.push(pair);
+    });
+    if(!matched.length)return;
+    var chips='<div class="wx-chips">';
+    matched.forEach(function(p){
+      var isRed=(p[0]==='雨衣'||p[0]==='折叠伞'||p[0]==='伞'||p[0]==='防蚊');
+      chips+='<span class="wx-chip'+(isRed?' red':'')+'">'+p[1]+' '+p[0]+'</span>';
+    });
+    chips+='</div>';
+    el.innerHTML=full+chips;
+  });
+})();
 (function(){
   document.querySelectorAll('section.card.day').forEach(function(card){
     var fold=[];
